@@ -1,4 +1,3 @@
-																																																												asaerw3rw3r4 = 1; Menu_Init_Lol = 1;
 //	@file Version: 1.2
 //	@file Name: init.sqf
 //	@file Author: [404] Deadbeat, [GoT] JoSchaap
@@ -32,7 +31,7 @@ if (!isDedicated) then
 
 //init Wasteland Core
 [] execVM "config.sqf";
-[] execVM "storeConfig.sqf"; // Separated as its now v large
+[] execVM "storeConfig.sqf"; // Separated as its now very large
 [] execVM "briefing.sqf";
 
 if (!isDedicated) then
