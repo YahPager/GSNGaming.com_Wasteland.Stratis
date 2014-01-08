@@ -12,16 +12,19 @@ _counter = 0;
 
 _boxList =
 [
-	"Box_NATO_Wps_F",
-	"Box_NATO_WpsSpecial_F",
-	"Box_East_Wps_F",
-	"Box_East_WpsSpecial_F",
-	"Box_IND_Wps_F",
-	"Box_IND_WpsSpecial_F"
+"Box_NATO_Wps_F",
+"Box_NATO_WpsLaunch_F",
+"Box_NATO_WpsSpecial_F",
+"Box_East_Wps_F",
+"Box_East_WpsLaunch_F",
+"Box_East_WpsSpecial_F",
+"Box_IND_Wps_F",
+"Box_IND_WpsLaunch_F",
+"Box_IND_WpsSpecial_F"
 ];
 
 {
-	if (random 1 < 0.50) then // 50% chance of box spawning at each town
+	if (random 1 < 0.90) then // 90% chance of box spawning at each town
 	{
 		_pos = getMarkerPos (_x select 0);
 		_boxClass = _boxList call BIS_fnc_selectRandom;
@@ -76,13 +79,61 @@ _boxList =
 				// Extra loadout
 				_boxItems =
 				[
-					["wep", "hgun_Pistol_heavy_01_F", 1, 5],
-					["mag", "9Rnd_45ACP_Mag", 5]
+					["wep", "hgun_Pistol_heavy_02_F", 1, 5],
+					["mag", "6Rnd_45ACP_Cylinder", 5]
 				];
 				
 				[_box, _boxItems] call processItems;
 			};
-			
+                        // Basic Launcher Weapons box contents
+			case (["_WpsLaunch_F", _boxClass] call fn_findString != -1):
+			{
+				switch (true) do
+				{
+					case (_box isKindOf "Box_NATO_WpsLaunch_F"):
+					{
+						_boxItems =
+						[
+							["wep", "launch_B_Titan_F", 2, 4],
+							["wep", "launch_B_Titan_short_F", 2, 4],
+                                                        ["wep", "launch_NLAW_F", 2, 4],
+							["wep", "launch_RPG32_F", 2, 4]
+						]
+					};
+					case (_box isKindOf "Box_East_WpsLaunch_F"):
+					{
+						_boxItems =
+						[
+							["wep", "launch_O_Titan_F", 2, 4],
+							["wep", "launch_O_Titan_short_F", 2, 4],
+                                                        ["wep", "launch_NLAW_F", 2, 4],
+							["wep", "launch_RPG32_F", 2, 4]
+						]
+					};
+					case (_box isKindOf "Box_IND_WpsLaunch_F"):
+					{
+						_boxItems =
+						[
+							["wep", "launch_I_Titan_F", 2, 4],
+							["wep", "launch_I_Titan_short_F", 2, 4],
+                                                        ["wep", "launch_NLAW_F", 2, 4],
+							["wep", "launch_RPG32_F", 2, 4]
+						]
+					};
+					default { _boxItems = [] };
+				};
+				
+				[_box, _boxItems] call processItems;
+				
+				// Extra loadout
+				/*_boxItems =
+				[
+					["wep", "hgun_Pistol_heavy_01_F", 1, 5],
+					["mag", "9Rnd_45ACP_Mag", 5]
+				];*/
+				
+				[_box, _boxItems] call processItems;
+			};
 			// Special Weapons box contents
 			case (["_WpsSpecial_F", _boxClass] call fn_findString != -1):
 			{

@@ -41,8 +41,8 @@ switch (_boxType) do
 			["wep", "Rangefinder", 5],
 			["itm", "Medikit", 3],
 			["itm", "Toolkit", 1],
-			["wep", "srifle_LRR_SOS_F", 1, 5],
-			["wep", "srifle_GM6_SOS_F", 1, 5],
+			["wep", "srifle_LRR_SOS_F", 1, 10],
+			["wep", "srifle_GM6_SOS_F", 1, 10],
 			//["wep", "hgun_Pistol_heavy_01_F", 1, 5],
 			//["wep", "hgun_Pistol_heavy_01_MRD_F", 1, 5],
 			//["wep", "arifle_MXM_F", 1, 5],
@@ -51,8 +51,8 @@ switch (_boxType) do
 			["wep", "LMG_Mk200_F", 1, 4],
 			["wep", "LMG_Zafir_F", 1, 4],
 			//["mag", "30Rnd_556x45_Stanag", 10],
-			["mag", "150Rnd_762x51_Box", 10],
-			["mag", "10Rnd_762x51_Mag", 10],
+			["mag", "150Rnd_762x51_Box", 1],
+			["mag", "10Rnd_762x51_Mag", 5],
 			["mag", "9Rnd_45ACP_Mag", 5]
 		];
     };
@@ -66,8 +66,8 @@ switch (_boxType) do
 			["wep", "arifle_TRG21_GL_F", 2, 5],
 			["wep", "arifle_Katiba_GL_F", 2, 5],
 			["wep", "arifle_MX_GL_F", 2, 5],
-			["wep", "srifle_LRR_SOS_F", 1, 5],
-			["wep", "srifle_GM6_SOS_F", 1, 5]
+			["wep", "srifle_LRR_SOS_F", 1, 10],
+			["wep", "srifle_GM6_SOS_F", 1, 10]
 			//["mag", "1Rnd_HE_Grenade_shell", 10],
 			//["mag", "SmokeShell", 2],
 			//["mag", "SmokeShellPurple", 2],
