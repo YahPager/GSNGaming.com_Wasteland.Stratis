@@ -19,9 +19,9 @@ diag_log format["WASTELAND SERVER - Main Mission Resumed: %1", _missionType];
 //pick the vehicles for the patrol (in hard difficulty also allows chance of mi48)
 _veh1 = ["O_Boat_Armed_01_hmg_F","B_Boat_Armed_01_minigun_F","I_Boat_Armed_01_minigun_F"] call BIS_fnc_selectRandom;
 if (A3W_missionsDifficulty == 1) then {
-	_veh2 = ["O_Heli_Attack_02_black_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
+	_veh2 = ["O_Heli_Attack_02_black_F","O_Heli_Light_02_F","I_Heli_Light_03_F","B_Heli_Light_01_armed_F"] call BIS_fnc_selectRandom;
 } else {
-	_veh2 = ["O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
+	_veh2 = ["O_Heli_Light_02_F","O_Heli_Attack_02_F","B_Heli_Light_01_armed_F","I_Heli_Light_03_F"] call BIS_fnc_selectRandom;
 };
 _veh3 = ["O_Boat_Armed_01_hmg_F","B_Boat_Armed_01_minigun_F","I_Boat_Armed_01_minigun_F"] call BIS_fnc_selectRandom;
 
