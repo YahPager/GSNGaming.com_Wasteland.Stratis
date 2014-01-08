@@ -48,7 +48,7 @@ _hint = parseText format ["<t align='center' color='%4' shadow='2' size='1.75'>S
 [_hint] call hintBroadcast;
 
 _CivGrpM = createGroup civilian;
-[_CivGrpM,_randomPos] spawn createMidGroup;
+[_CivGrpM,_randomPos] spawn createLargeGroup;
 
 diag_log format["WASTELAND SERVER - Side Mission Waiting to be Finished: %1",_missionType];
 _startTime = floor(time);
