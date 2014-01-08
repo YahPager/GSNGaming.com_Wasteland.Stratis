@@ -24,13 +24,13 @@ diag_log format["WASTELAND SERVER - Main Mission Resumed: %1", _missionType];
 // incase mission difficulty is set to easy (0) the choppers will also fly at half speed
 
 if (A3W_missionsDifficulty == 1) then {
-	_heli1 = ["O_Heli_Attack_02_black_F","O_Heli_Attack_02_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
-	_heli2 = ["O_Heli_Attack_02_black_F","O_Heli_Attack_02_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
-	_heli3 = ["O_Heli_Attack_02_black_F","O_Heli_Attack_02_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
+	_heli1 = ["O_Heli_Attack_02_black_F","O_Heli_Attack_02_F","O_Heli_Light_02_F","I_Heli_Light_03_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
+	_heli2 = ["O_Heli_Attack_02_black_F","O_Heli_Attack_02_F","O_Heli_Light_02_F","I_Heli_Light_03_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
+	_heli3 = ["O_Heli_Attack_02_black_F","O_Heli_Attack_02_F","O_Heli_Light_02_F","I_Heli_Light_03_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
 } else {
-	_heli1 = ["O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
-	_heli2 = ["O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
-	_heli3 = ["O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
+	_heli1 = ["O_Heli_Light_02_F","I_Heli_Light_03_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
+	_heli2 = ["O_Heli_Light_02_F","I_Heli_Light_03_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
+	_heli3 = ["O_Heli_Light_02_F","I_Heli_Light_03_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
 };
 
 _grouphf = createGroup civilian;
