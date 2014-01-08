@@ -9,7 +9,7 @@ if (!isServer) exitWith {};
 private ["_unit", "_skill", "_accuracy"];
 _unit = _this;
 
-_skill = if (["A3W_missionsDifficulty", 0] call getPublicVar > 0) then { 0.5 } else { 0.25 };
+_skill = if (["A3W_missionsDifficulty", 0] call getPublicVar > 0) then { 1 } else { 0.75 };
 _accuracy = if (["A3W_missionsDifficulty", 0] call getPublicVar > 0) then { 1 } else { 0.66 };
 
 _unit allowFleeing 0;
