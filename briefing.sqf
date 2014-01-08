@@ -7,6 +7,138 @@ waitUntil {!isNull player};
 player createDiarySubject ["infos", "Infos and Help"];
 player createDiarySubject ["changelog", "Changelog"];
 player createDiarySubject ["credits", "Credits"];
+player createDiarySubject ["GSN", "GSN Changelog"];
+
+player createDiaryRecord["GSN",
+[
+"v1",
+"
+<br/>
+	[Pilot] - GSNGaming.com Alpha Version of our ARMA 3 Wasteland based off of Team Wasteland Altis v3 Alpha.<br/>
+	[Gun Store] - Where you can get a wide variety of Weapons, Ammo and Equipment.<br/>
+	[General Store] - Has Food, Water, Jerry Cans, Spawn Beacons, and Camo Netting.<br/>
+	[Vehicle Service] - Is where you can pull up and Refuel, Repair, and Rearm your vehicle.<br/>
+	[First-Aid] - If your not a medic and need healed you can go in this building and get Healed.<br/>
+	[Heli Service] - Same as Vehicle Service but for Heli. You must be inside the circle.<br/>
+	[Future] - We will be adding a Vehice Store one stop shop to get Land, Air and Sea Vehicles.<br/>
+	[For Now] - Light Tank's, MBT's, and APC's. do not spawn and are not in Missions.<br/>
+	[Errors] - Are likely and will be fixed when found within a day or two.<br/>
+	[Report] - Errors that you find you can report them to our Forums @ GSNGaming.com.<br/>
+	[Modifier] - <font size='16'>GSN Pager has converted this Team Wasteland Mod from their Altis Version to Stratis.</font><br/>
+"
+]
+];
+
+player createDiaryRecord["GSN",
+[
+"v2",
+"
+<br/>
+	[NEW] - GSNGaming.com is now running the Beta Version of The Team Wasteland Mod.<br/>
+	[NEW] - Added Divers as a class you can pick to be.<br/>
+	[NEW] - Dive Missions: 1 for Main Missions and 1 for Side Missions.<br/>
+	[Modified] - Vehicle Loadout.<br/>
+	[Modified] - What weapons you spawn in with.<br/>
+"
+]
+];
+
+player createDiaryRecord["GSN",
+[
+"v3",
+"
+<br/>
+	[NEW] - Update of the Team Wasteland Beta Version.<br/>
+"
+]
+];
+
+player createDiaryRecord["GSN",
+[
+"v4",
+"
+<br/>
+	[NEW] - Update of the Team Wasteland Beta Version.<br/>
+	[NEW] - Added Vehicle Stores.<br/>
+        #1 Airfield North: Land, Air, & Heli Spawns.<br/>
+        #2 Kamino Bay: Land, Heli, & Sea Spawns.<br/>
+        #3 Air Station Mike: Land & Heli Spawns.<br/>
+        #4 Strogos Bay: Land, Air, & Heli Spawns.<br/>
+        [Updated] Mapping layout.<br/>
+        [Changed] Loadout from Mk 20 to MXM w/ Hamr Scope and Pointer
+"
+]
+];
+
+player createDiaryRecord["GSN",
+[
+"v5",
+"
+<br/>
+	[NEW] - Update of the Team Wasteland Initial Release v0.9c<br/>
+"
+]
+];
+
+player createDiaryRecord["GSN",
+[
+"v6",
+"
+<br/>
+	[NEW] - Update from Team Wasteland Initial Release v0.9d<br/>
+	[Changed] - Vehicle loadout add The Camo GhostHawk as a spawning Heli<br/>
+	[Changed] - Jets are turned off till I can get weapons to spawn that can shot them down.<br/>
+	[Changed] - Gas Station is no longer a Vehicle Service Added one on the Airfield.<br/>
+"
+]
+];
+
+player createDiaryRecord["GSN",
+[
+"v7",
+"
+<br/>
+	[NEW] - Added the DMR (Rahim marksman rifle - bullpup 7.62) with the ARCO Scope as your Spawning Rifle.<br/>
+	[NEW] - Added the 4-Five (.45 pistol) as your Spawning Pistol.<br/>
+	[WORKING] - On getting the new weapons added to the Mission Crates.<br/>
+"
+]
+];
+
+player createDiaryRecord["GSN",
+[
+"v8",
+"
+<br/>
+	[CHANGED] - Back to the MK-18 with the DMS Scope (NEW) as your Spawning Rifle.<br/>
+	[NEW] - Added Stratis Hospital to the map.<br/>
+	[NEW] - Got First-Aid Stations to work and added them back on the map.<br/>
+"
+]
+];
+
+player createDiaryRecord["GSN",
+[
+"v9",
+"
+<br/>
+	[NEW] - Update from Team Wasteland Version 0.9f.<br/>
+	[NEW] - WY-55 Hellcat (Unarmed) add as a regular spawning Heli and as a CivHeli Mission.<br/>
+	[NEW] - LRPS Long Range Precision Scope added to Crates and Gun Stores.<br/>
+	[Changed] - Headgear so you can tell SIDES apart (Opfor, Blufor, Indie).<br/>
+	[NEW] - Money Missions as added by Team Wasteland.<br/>
+"
+]
+];
+player createDiaryRecord["GSN",
+[
+"v10",
+"
+<br/>
+	[NEW] - Update the mission.sqm to the A3WL Stratis one with our touches.<br/>
+"
+]
+];
 
 player createDiaryRecord ["changelog",
 [

@@ -23,9 +23,9 @@ diag_log format["WASTELAND SERVER - Side Mission Resumed: %1", _missionType];
 // helicopters available for this mission (if mission is in hard difficulty also chance on a mi48)
 // if mission set to easy, helicopter will fly at half speed
 if (A3W_missionsDifficulty == 1) then {
-	_helipick = ["O_Heli_Attack_02_black_F","O_Heli_Attack_02_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
+	_helipick = ["O_Heli_Attack_02_black_F","O_Heli_Attack_02_F","O_Heli_Light_02_F","I_Heli_Light_03_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
 } else {
-	_helipick = ["O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
+	_helipick = ["O_Heli_Light_02_F","I_Heli_Light_03_F","B_Heli_Light_01_armed_F","B_Heli_Transport_01_camo_F"] call BIS_fnc_selectRandom;
 };
 _groupsm = createGroup civilian;
 

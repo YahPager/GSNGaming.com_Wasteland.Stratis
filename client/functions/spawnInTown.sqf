@@ -26,4 +26,4 @@ sleep 5;
 
 _hour = date select 3;
 _mins = date select 4;
-["Wasteland", _townName, format ["%1:%3%2", _hour, _mins, if (_mins < 10) then {"0"} else {""}]] spawn BIS_fnc_infoText;
+["GSN A3WL Stratis", _townName, format ["%1:%3%2", _hour, _mins, if (_mins < 10) then {"0"} else {""}]] spawn BIS_fnc_infoText;

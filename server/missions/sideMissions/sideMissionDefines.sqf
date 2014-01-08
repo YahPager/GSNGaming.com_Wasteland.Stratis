@@ -11,7 +11,7 @@
 #define sideMissionTimeout (20*60)
 #define sideMissionDelayTime (3*60)
 
-#define missionRadiusTrigger 99999
+#define missionRadiusTrigger 100
 #define sideMissionColor "#4BC9B0"
 #define failMissionColor "#FF1717"
 #define successMissionColor "#17FF41"

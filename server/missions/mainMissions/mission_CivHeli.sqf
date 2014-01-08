@@ -28,7 +28,7 @@ diag_log format["WASTELAND SERVER - Main Mission Resumed: %1",_missionType];
 
 [_missionMarkerName,_randomPos,_missionType] call createClientMarker;
 
-_vehicleClass = ["B_Heli_Light_01_F", "I_Heli_Transport_02_F", "O_Heli_Light_02_unarmed_F"] call BIS_fnc_selectRandom;
+_vehicleClass = ["B_Heli_Light_01_F", "I_Heli_Light_03_unarmed_F", "O_Heli_Light_02_unarmed_F"] call BIS_fnc_selectRandom;
 
 // Vehicle spawning: Name, Position, Fuel, Ammo, Damage, "NONE"
 _vehicle = [_vehicleClass,_randomPos,0.5,1,0,"NONE"] call createMissionVehicle;
@@ -51,9 +51,7 @@ _vehicleName = getText (configFile >> "cfgVehicles" >> typeOf _vehicle >> "displ
 if (((toArray _vehicleName) select 0) in (toArray "AEIMO")) then
 {
 	_vehDeterminer = "An";
-}
-else
-{
+} else {
 	_vehDeterminer = "A";
 };
 

@@ -42,9 +42,9 @@ A3W_serverSpawning = 1;      // Vehicle, object, and loot spawning (0 = no, 1 = 
 A3W_boxSpawning = 1;         // If serverSpawning = 1, also spawn ammo boxes in some towns (0 = no, 1 = yes)
 A3W_boatSpawning = 1;        // If serverSpawning = 1, also spawn boats at marked areas near coasts (0 = no, 1 = yes)
 A3W_heliSpawning = 1;        // If serverSpawning = 1, also spawn helicopters in some towns and airfields (0 = no, 1 = yes)
-A3W_planeSpawning = 1;       // If serverSpawning = 1, also spawn planes at some airfields (0 = no, 1 = yes)
+A3W_planeSpawning = 0;       // If serverSpawning = 1, also spawn planes at some airfields (0 = no, 1 = yes)
 A3W_baseBuilding = 1;        // If serverSpawning = 1, also spawn basebuilding parts in towns (0 = no, 1 = yes)
-A3W_baseSaving = 0;          // Save base objects between restarts (0 = no, 1 = yes) - requires iniDB mod 
+A3W_baseSaving = 1;          // Save base objects between restarts (0 = no, 1 = yes) - requires iniDB mod 
 PDB_ServerID = "any";        // iniDB saves prefix (change this in case you run multiple servers from the same folder)
 
 // load external config
@@ -89,13 +89,13 @@ if (["A3W_baseSaving", 0] call getPublicVar > 0 || {["config_player_saving_enabl
 	};
 };
 
-if (!isNil "A3W_startHour" || !isNil "A3W_moonLight") then
+/*if (!isNil "A3W_startHour" || !isNil "A3W_moonLight") then
 {
 	private ["_monthDay", "_startHour"];
 	_monthDay = if (["A3W_moonLight", 0] call getPublicVar > 0) then { 10 } else { 25 };
 	_startHour = ["A3W_startHour", date select 2] call getPublicVar;
 	setDate [2035, 6, _monthDay, _startHour, 0];
-};
+};*/
 
 if (["A3W_buildingLoot", 0] call getPublicVar > 0) then 
 {
@@ -115,14 +115,14 @@ if (["A3W_serverSpawning", 0] call getPublicVar > 0) then
 		waitUntil {sleep 0.1; scriptDone _heliSpawn};
 	};
 	
-	_vehSpawn = [] execVM "server\functions\vehicleSpawning.sqf";
-	waitUntil {sleep 0.1; scriptDone _vehSpawn};
+		_vehSpawn = [] execVM "server\functions\vehicleSpawning.sqf";
+		waitUntil {sleep 0.1; scriptDone _vehSpawn};
 	
-	if (["A3W_planeSpawning", 0] call getPublicVar > 0) then
+	/*if (["A3W_planeSpawning", 0] call getPublicVar > 0) then
 	{
 		_planeSpawn = [] execVM "server\functions\planeSpawning.sqf";
 		waitUntil {sleep 0.1; scriptDone _planeSpawn};
-	};
+	};*/
 	
 	if (["A3W_boatSpawning", 0] call getPublicVar > 0) then
 	{
@@ -156,9 +156,9 @@ if (count (["config_territory_markers", []] call getPublicVar) > 0) then
 if (["A3W_serverMissions", 0] call getPublicVar > 0) then
 {
 	diag_log "WASTELAND SERVER - Initializing Missions";
-    [] execVM "server\missions\sideMissionController.sqf";
-    sleep 5;
-    [] execVM "server\missions\mainMissionController.sqf";
+	[] execVM "server\missions\sideMissionController.sqf";
+	sleep 5;
+	[] execVM "server\missions\mainMissionController.sqf";
 	sleep 5;
 	[] execVM "server\missions\moneyMissionController.sqf";
 };

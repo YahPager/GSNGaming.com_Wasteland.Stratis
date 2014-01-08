@@ -12,7 +12,7 @@ _counter = 0;
 {
 	if (["boatSpawn_", _x] call fn_findString == 0) then
 	{
-		if (random 1 < 0.75) then // 75% chance spawning
+		if (random 1 < 0.80) then // 80% chance spawning
 		{
 			[markerPos _x] call boatCreation;
 			_counter = _counter + 1;

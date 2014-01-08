@@ -10,26 +10,31 @@
 // Marker Name, Diameter, City Name
 cityList = compileFinal str
 [
-	["Town_1", 200, "Air Station Mike-28"],
-	["Town_2", 100, "Agios Loannis"],
-	["Town_3", 100, "Agios Cephas"],
-	["Town_4", 200, "Girna"],			
-	["Town_5", 200, "Camp Tempest"],
-	["Town_6", 300, "Stratis Airbase Town"],
-	["Town_7", 250, "Stratis Airbase Runway"],
-	["Town_8", 350, "Agia Marina"],
-	["Town_9", 250, "Kill Farm"],
-	["Town_10", 200, "Camp Rogain"],
-	["Town_11", 230, "Kamino Firing Range"],
-	["Town_12", 240, "Camp Maxwell"],
-	["Town_13", 150, "ol-Kamino"],
-	["Town_14", 15, "Isla Pythos"],  // do not increase radius, else vehicles and objects will spawn on the island!
-	["Town_15", 100, "Baldy Barracks"],
-	["Town_16", 175, "ol-Keiros"],			
-	["Town_17", 175, "Tsoukalia"],
-	["Town_18", 100, "LZ Connor"],
-	["Town_19", 180, "Playa-del-Stragos"],
-	["Town_20", 250, "ol-Jay"]
+	["Town_1", 350, "Air Station Mike-26"],
+	["Town_2", 200, "Girna"],
+	["Town_3", 150, "LZ Baldy"],
+	["Town_4", 250, "Military Range"],
+	["Town_5", 100, "Limeri Bay"],
+	["Town_6", 200, "Camp Maxwell"],
+	["Town_7", 175, "Stratis Hospital"],
+	["Town_8", 100, "Strogos Bay"],
+	["Town_9", 100, "Nisi Bay"],
+	["Town_10", 350, "Agia Marina"],
+	["Town_11", 200, "Camp Tempest"],
+	["Town_12", 350, "Kamino"],
+	["Town_13", 100, "Abandoned Beach"],
+	["Town_14", 200, "Camp Rogain"],
+	["Town_15", 200, "Crossroads"],
+	["Town_16", 350, "Stratis Air Base"],
+	["Town_17", 150, "The Spartan"],
+	["Town_18", 200, "Old Transmitter Towers"],
+	["Town_19", 175, "Old Outpost"],
+	["Town_20", 200, "Kill Farm"],
+	["Town_21", 100, "Stratis Bay"],
+	["Town_22", 350, "Smallville"],
+	["Town_23", 100, "Tsoukalia"],
+	["Town_24", 100, "Jay Cove"],
+	["Town_25", 100, "Wilderness"]
 ];
 
 militarylist = compileFinal str
@@ -53,41 +58,26 @@ config_refuel_amounts = compileFinal str
 ];
 
 // Is player saving enabled?
-config_player_saving_enabled = compileFinal "0";
+config_player_saving_enabled = compileFinal "1";
 
 // Can players get extra in-game cash at spawn by donating?
 config_player_donations_enabled = compileFinal "0";
 
 // How much do players spawn with?
-config_initial_spawn_money = compileFinal "100";
+config_initial_spawn_money = compileFinal "250";
 
-// Territory system definitions. See territory/README.md for more details.
-//
-// Format is:
-// 1 - Territory marker name. Must begin with 'TERRITORY_'
-// 2 - Descriptive name
-// 3 - Monetary value
-// 4 - Territory category, currently unused. See territory/README.md for details.
 config_territory_markers = compileFinal str
 [
-	["TERRITORY_AGIA_NORTH", "North Agia Marina", 200, "TOWN"],
-	["TERRITORY_AGIA_SOUTH", "South Agia Marina", 200, "TOWN"],
-	["TERRITORY_AGIOS_CEPHAS", "Agios Cephas", 200, "TOWN"],
-	["TERRITORY_AGIOS_IOANNIS", "Agios Ioannis", 200, "TOWN"],
-	["TERRITORY_AIRBASE_NORTH", "North Stratis Airbase", 500, "AIRBASE"],
-	["TERRITORY_AIRBASE_SOUTH", "South Stratis Airbase", 500, "AIRBASE"],
-	["TERRITORY_AIRSTATION_MIKE", "Air Station Mike", 200, "MILITARY"],
-	["TERRITORY_CAMP_MAXWELL", "Camp Maxwell", 200, "MILITARY"],
-	["TERRITORY_CAMP_ROGAIN", "Camp Rogain", 200, "MILITARY"],
-	["TERRITORY_CAMP_TEMPEST", "Camp Tempest", 200, "MILITARY"],
-	["TERRITORY_GIRNA", "Girna", 200, "TOWN"],
-	["TERRITORY_JAY_COVE", "Jay Cove", 200, "TOWN"],
-	["TERRITORY_KAMINO_FIRING_RANGE", "Kamino Firing Range", 200, "MILITARY"],
-	["TERRITORY_KAMINO_SETTLEMENT", "Kamino Settlement", 200, "TOWN"],
-	["TERRITORY_KILL_FARM", "Kill Farm", 200, "TOWN"],
-	["TERRITORY_LIMERI_BAY", "Limeri Bay", 200, "TOWN"],
-	["TERRITORY_LZ_BALDY", "LZ Baldy", 200, "MILITARY"],
-	["TERRITORY_LZ_CONNOR", "LZ Connor", 200, "MILITARY"],
-	["TERRITORY_PYTHOS", "Pythos Island", 200, "ISLAND"],
-	["TERRITORY_RADIO_TOWERS", "Radio Towers", 200, "MILITARY"]
+	["TERRITORY_MIKE", "Air Station Mike-26", 500, "RADAR"],
+	["TERRITORY_MAXWELL", "Camp Maxwell", 250, "RESEARCH"],
+	["TERRITORY_HOSPITAL", "Stratis Hospital", 250, "RESEARCH"],
+	["TERRITORY_TEMPEST", "Camp Tempest", 250, "RESEARCH"],
+	["TERRITORY_KAMINO", "Kamino Firing Range", 300, "CITY"],
+	["TERRITORY_ROGAIN", "Camp Rogain", 250, "RESEARCH"],
+	["TERRITORY_SAB", "Stratis Air Base", 1000, "AIRFIELD"],
+        ["TERRITORY_MILITARY", "Military Range", 250, "RESEARCH"],
+	["TERRITORY_LIGHTHOUSE", "The Spartan Lighthouse", 300, "CITY"],
+	["TERRITORY_TOWERS", "Old Transmitter Towers", 300, "RADIO"],
+        ["TERRITORY_PYTHOS", "Pythos Island", 300, "CITY"],
+	["TERRITORY_KILLFARM", "Kill Farm", 250, "RESEARCH"]
 ];
