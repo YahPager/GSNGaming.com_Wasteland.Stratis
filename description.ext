@@ -9,10 +9,10 @@ class Header
 {
 	gameType=Sandbox;
 	minPlayers=1;
-	maxPlayers=84;
+	maxPlayers=120;
 };
 author="Team Wasteland - A3Wasteland.com";
-onLoadName = "A3Wasteland Stratis";
+onLoadName = "GSN A3WL Stratis v0.9f";
 onLoadMission = "Wasteland is a harsh survival sandbox where two teams and independent players fight for survival.";
 overviewText = "Wasteland is a harsh survival sandbox where two teams and independent players fight for survival.";
 overviewTextLocked = "Wasteland is a harsh survival sandbox where two teams and independent players fight for survival.";
@@ -28,7 +28,7 @@ overviewPicture = "Loading.jpg";
 #include "client\systems\groups\dialog\groupManagement.hpp"
 #include "client\systems\gunStore\dialog\gunshop_settings.hpp"
 #include "client\systems\generalStore\dialog\genstore_settings.hpp"
-#include "client\systems\vehicleStore\dialog\vehiclestore_settings.hpp"
+//#include "client\systems\vehicleStore\dialog\vehiclestore_settings.hpp"
 #include "client\systems\adminPanel\dialog\adminMenu.hpp"
 #include "client\systems\adminPanel\dialog\modMenu.hpp"
 #include "client\systems\adminPanel\dialog\serverAdminMenu.hpp"
@@ -113,7 +113,7 @@ class CfgIdentities
         pitch = 1.1;
     };
 	
-	class VehStore1
+	/*class VehStore1
     {
         name = "VehStore1";
         face = "GreekHead_A3_06";
@@ -129,5 +129,5 @@ class CfgIdentities
         glasses = "None";
         speaker = "Male01ENG";
         pitch = 1.1;
-    };
+    };*/
 };
