@@ -17,8 +17,8 @@ _MainMissions =
 	["mission_Coastal_Convoy", 0.5], 
 	["mission_Convoy", 1],
 	["mission_HostileHeliFormation", 0.5],  
-	/*["mission_APC", 0],
-	["mission_MBT", 0],*/
+	["mission_APC", 0.5],
+	/*["mission_MBT", 0],*/
 	["mission_LightArmVeh", 1],
 	["mission_ArmedHeli", 1],
 	["mission_CivHeli", 1],
