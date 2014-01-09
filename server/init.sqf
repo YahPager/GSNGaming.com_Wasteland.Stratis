@@ -114,10 +114,10 @@ if (["A3W_serverSpawning", 0] call getPublicVar > 0) then
 
     call compile preprocessFileLineNumbers "server\functions\vehicleSpawning.sqf";
 
-    if (["A3W_planeSpawning", 0] call getPublicVar > 0) then
+    /*if (["A3W_planeSpawning", 0] call getPublicVar > 0) then
     {
         call compile preprocessFileLineNumbers "server\functions\planeSpawning.sqf";
-    };
+    };*/
 
     if (["A3W_boatSpawning", 0] call getPublicVar > 0) then
     {
