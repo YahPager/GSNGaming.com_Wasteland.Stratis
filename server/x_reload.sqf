@@ -22,15 +22,15 @@ if(player == driver _vehicle) then {
         if (count _magazines > 0) then {
             _removed = [];
             {
-                if (!(_x in _removed)) then {
+		if (!(_x in _removed)) then {
                     _vehicle removeMagazines _x;
                     _removed = _removed + [_x];
-                };
+		};
             } forEach _magazines;
             {
-                _vehicle vehicleChat format ["Reloading %1", _x];
-                sleep x_reload_time_factor;
-                _vehicle addMagazine _x;
+		_vehicle vehicleChat format ["Reloading %1", _x];
+		sleep x_reload_time_factor;
+		_vehicle addMagazine _x;
             } forEach _magazines;
         };
 
@@ -38,24 +38,24 @@ if(player == driver _vehicle) then {
 
         if (_count > 0) then {
             for "_i" from 0 to (_count - 1) do {
-                scopeName "xx_reload2_xx";
-                _config = (configFile >> "CfgVehicles" >> _type >> "Turrets") select _i;
-                _magazines = getArray(_config >> "magazines");
-                _removed = [];
-                {
+		scopeName "xx_reload2_xx";
+		_config = (configFile >> "CfgVehicles" >> _type >> "Turrets") select _i;
+		_magazines = getArray(_config >> "magazines");
+		_removed = [];
+		{
                     if (!(_x in _removed)) then {
                         _vehicle removeMagazines _x;
                         _removed = _removed + [_x];
                     };
-                } forEach _magazines;
-                {
+		} forEach _magazines;
+		{
                     _vehicle vehicleChat format ["Reloading %1", _x];
                     sleep x_reload_time_factor;
                     _vehicle addMagazine _x;
                     sleep x_reload_time_factor;
-                } forEach _magazines;
-                _count_other = count (_config >> "Turrets");
-                if (_count_other > 0) then {
+		} forEach _magazines;
+		_count_other = count (_config >> "Turrets");
+		if (_count_other > 0) then {
                     for "_i" from 0 to (_count_other - 1) do {
                         _config2 = (_config >> "Turrets") select _i;
                         _magazines = getArray(_config2 >> "magazines");
@@ -73,7 +73,7 @@ if(player == driver _vehicle) then {
                             sleep x_reload_time_factor;
                         } forEach _magazines;
                     };
-                };
+		};
             };
         };
         _vehicle setVehicleAmmo 1;	// Reload turrets / drivers magazine
