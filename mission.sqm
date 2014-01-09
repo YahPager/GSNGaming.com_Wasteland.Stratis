@@ -6006,7 +6006,7 @@ class Mission
 		};
 		class Item48
 		{
-			position[]={1979.0082,5.8750038,5613.9985};
+			position[]={1951.7518,5.9799438,5638.6592};
 			name="Town_16";
 			type="Empty";
 			colorName="ColorRed";
@@ -6015,7 +6015,7 @@ class Mission
 		};
 		class Item49
 		{
-			position[]={1633.6008,5.5,5123.1533};
+			position[]={1640.0259,5.5,5136.8066};
 			name="Town_7";
 			type="Empty";
 			colorName="ColorRed";
@@ -6150,7 +6150,7 @@ class Mission
 		};
 		class Item64
 		{
-			position[]={4475.4722,119.11819,6749.4346};
+			position[]={4449.7715,124.79527,6750.2378};
 			name="Town_20";
 			type="Empty";
 			colorName="ColorRed";
@@ -6371,7 +6371,7 @@ class Mission
 		};
 		class Item92
 		{
-			position[]={1682.1018,5.5,5375.0181};
+			position[]={1682.1018,5.5,5371.2974};
 			name="heliSpawn_9";
 			type="Empty";
 			colorName="ColorPink";
@@ -6675,7 +6675,7 @@ class Mission
 		};
 		class Item132
 		{
-			position[]={1756.4192,5.5,5320.6304};
+			position[]={1756.4192,5.5,5323.3467};
 			name="mission_5";
 			type="Empty";
 			colorName="ColorBlack";
