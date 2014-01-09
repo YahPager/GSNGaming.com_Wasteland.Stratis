@@ -95,43 +95,53 @@
 ///////////////////////////////////////////////////////////////////////////
 /// Base Classes
 ///////////////////////////////////////////////////////////////////////////
+class RscProgressBar {
+        access = 0;
+        type = CT_PROGRESS;
+        style = ST_HORIZONTAL;
+        colorFrame[] = {0,0,0,1};
+        colorBar[] = {0,0,0,0.5};
+        shadow = 2;
+        texture = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\normal_ca.paa";
+};
+
 class RscText
 {
-	access = 0;
-	type = 0;
-	idc = -1;
-	colorBackground[] = 
-	{
-		0,
-		0,
-		0,
-		0
-	};
-	colorText[] = 
-	{
-		1,
-		1,
-		1,
-		1
-	};
-	text = "";
-	fixedWidth = 0;
-	x = 0;
-	y = 0;
-	h = 0.037;
-	w = 0.3;
-	style = 0;
-	shadow = 1;
-	colorShadow[] = 
-	{
-		0,
-		0,
-		0,
-		0.5
-	};
-	font = "PuristaMedium";
-	SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-	linespacing = 1;
+        access = 0;
+        type = 0;
+        idc = -1;
+        colorBackground[] =
+        {
+                0,
+                0,
+                0,
+                0
+        };
+        colorText[] =
+        {
+                1,
+                1,
+                1,
+                1
+        };
+        text = "";
+        fixedWidth = 0;
+        x = 0;
+        y = 0;
+        h = 0.037;
+        w = 0.3;
+        style = 0;
+        shadow = 1;
+        colorShadow[] =
+        {
+                0,
+                0,
+                0,
+                0.5
+        };
+        font = "PuristaMedium";
+        SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+        linespacing = 1;
 };
 class RscStructuredText
 {

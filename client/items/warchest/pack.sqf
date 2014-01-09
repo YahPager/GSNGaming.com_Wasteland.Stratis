@@ -32,8 +32,7 @@ _hasFailed = {
 };
 
 private "_success";
-MUTEX_LOCK_OR_FAIL;
-_success =  [DURATION, ANIM, _hasFailed, [_warchest]] call mf_util_playUntil;
+_success = [DURATION, ANIM, _hasFailed, [_warchest]] call a3w_actions_start;
 MUTEX_UNLOCK;
     
 if (_success) then {
