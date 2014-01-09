@@ -115,7 +115,6 @@ if (isServer) then
 				};
 			};
 			
-			_bPos = _building buildingPos _npcPos;
 			_npc setPosATL _bPos;
 			
 			_desk = [_npc, _bPos, _pDir, _deskDirMod, _identity] call compile preprocessFileLineNumbers "server\functions\createStoreFurniture.sqf";
