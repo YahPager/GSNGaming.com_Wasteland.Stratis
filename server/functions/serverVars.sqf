@@ -189,7 +189,7 @@ vehicleAddition =
 "optic_Holosight_smg",
 "optic_Yarris",
 "optic_DMS",
-"optic_NVS",
+//"optic_NVS",
 "optic_SOS"
 ];
 
