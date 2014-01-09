@@ -12,12 +12,12 @@ private ["_MoneyMissions", "_MoneyMissionsOdds", "_mission", "_nextMission", "_m
 diag_log "WASTELAND SERVER - Started Money Mission State";
 
 _MoneyMissions = 
-[
-	["mission_MoneyShipment", 1],
-	["mission_SunkenTreasure", 0.5]
-//  	["mission_MobMoney", 1]
+/*[
+	["mission_MoneyShipment", 0],
+	["mission_SunkenTreasure", 0]
+//  	["mission_MobMoney", 0]
 
-];
+];*/
 
 _MoneyMissionsOdds = [];
 {
