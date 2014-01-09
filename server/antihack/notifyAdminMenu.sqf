@@ -12,32 +12,30 @@ _value = [_this, 0, "", ["",0]] call BIS_fnc_param;
 
 if (typeName _value == "SCALAR" && {_value > 0}) then
 {
-	_message = format ["[NOTICE] %1 used the admin menu to obtain $%2", name player, _value];
-}
-else
-{
-	if (isClass (configFile >> "CfgVehicles" >> _value)) then
-	{
-		_displayStr = getText (configFile >> "CfgVehicles" >> _value >> "displayName");
-	};
+    _message = format ["[NOTICE] %1 used the admin menu to obtain $%2", name player, _value];
+} else {
+    if (isClass (configFile >> "CfgVehicles" >> _value)) then
+    {
+        _displayStr = getText (configFile >> "CfgVehicles" >> _value >> "displayName");
+    };
 
-	if (isClass (configFile >> "CfgWeapons" >> _value)) then
-	{
-		_displayStr = getText (configFile >> "CfgWeapons" >> _value >> "displayName");
-	};
+    if (isClass (configFile >> "CfgWeapons" >> _value)) then
+    {
+        _displayStr = getText (configFile >> "CfgWeapons" >> _value >> "displayName");
+    };
 
-	if (isClass (configFile >> "CfgMagazines" >> _value)) then
-	{
-		_displayStr = getText (configFile >> "CfgMagazines" >> _value >> "displayName");
-	};
-	
-	if (!isNil "_displayStr") then
-	{
-		_message = format ['[NOTICE] %1 used the admin menu to obtain a "%2"', name player, _displayStr];
-	};
+    if (isClass (configFile >> "CfgMagazines" >> _value)) then
+    {
+        _displayStr = getText (configFile >> "CfgMagazines" >> _value >> "displayName");
+    };
+
+    if (!isNil "_displayStr") then
+    {
+        _message = format ['[NOTICE] %1 used the admin menu to obtain a "%2"', name player, _displayStr];
+    };
 };
 
 if (!isNil "_message") then
 {
-	[[_message, getPlayerUID player, _flagChecksum, true], "chatBroadcast", true, false] call TPG_fnc_MP;
+    [[_message, getPlayerUID player, _flagChecksum, true], "chatBroadcast", true, false] call TPG_fnc_MP;
 };
