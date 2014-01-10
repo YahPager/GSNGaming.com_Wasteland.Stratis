@@ -739,8 +739,8 @@ customPlayerItems = compileFinal str
 // Name, Building Position, Desk Direction Modifier, Excluded Buttons
 
 // Note if Building Position
-	Type = Scalar  Position = BuildingPosition
-	Type = Array   Position = Pos ATL
+	//Type = Scalar  Position = BuildingPosition
+	//Type = Array   Position = Pos ATL
 storeOwnerConfig = compileFinal str
 [
 	["GenStore1", 1, 178, []],

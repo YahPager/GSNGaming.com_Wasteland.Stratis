@@ -39,7 +39,7 @@
 #define __SERVER_SKIP_NIGHT__ 1
 
 // Define this if you want to enable long periods of running to drain your water level
-#define __RUNNING_EXHAUSTION__
+#define __RUNNING_EXHAUSTION__ 1
 
 // FATIGUE SYSTEM DEFINES
 #ifdef __RUNNING_EXHAUSTION__
