@@ -12,10 +12,8 @@
 
 if (R3F_LOG_mutex_local_verrou) then
 {
-	player globalChat STR_R3F_LOG_mutex_action_en_cours;
-}
-else
-{
+	player globalChat (localize "STR_R3F_LOG_mutex_action_en_cours");
+} else {
 	R3F_LOG_mutex_local_verrou = true;
 	
 	private ["_objet", "_classes_transporteurs", "_transporteur", "_i"];
@@ -72,7 +70,7 @@ else
 					_objets_charges = _objets_charges + [_objet];
 					_transporteur setVariable ["R3F_LOG_objets_charges", _objets_charges, true];
 					
-					player globalChat STR_R3F_LOG_action_charger_selection_en_cours;
+					player globalChat (localize "STR_R3F_LOG_action_charger_selection_en_cours");
 					
 					sleep 2;
 					
@@ -90,21 +88,15 @@ else
 					
 					R3F_LOG_objet_selectionne = objNull;
 					
-					player globalChat format [STR_R3F_LOG_action_charger_selection_fait, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
-				}
-				else
-				{
-					player globalChat format [STR_R3F_LOG_action_charger_selection_trop_loin, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
+					player globalChat format [(localize "STR_R3F_LOG_action_charger_selection_fait"), getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
+				} else {
+					player globalChat format [(localize "STR_R3F_LOG_action_charger_selection_trop_loin"), getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
 				};
-			}
-			else
-			{
-				player globalChat format [STR_R3F_LOG_action_charger_selection_pas_assez_de_place, (_chargement_maxi - _chargement_actuel), _cout_capacite_objet];
+			} else {
+				player globalChat format [(localize "STR_R3F_LOG_action_charger_selection_pas_assez_de_place"), (_chargement_maxi - _chargement_actuel), _cout_capacite_objet];
 			};
-		}
-		else
-		{
-			player globalChat format [STR_R3F_LOG_action_charger_selection_objet_transporte, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
+		} else {
+			player globalChat format [(localize "STR_R3F_LOG_action_charger_selection_objet_transporte"), getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
 		};
 	};
 	

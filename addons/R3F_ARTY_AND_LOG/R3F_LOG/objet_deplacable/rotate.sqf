@@ -12,7 +12,7 @@ _rotateAmount = _this select 3;
 _targetDirection = "";
 
 if (R3F_LOG_mutex_local_verrou) then {
-	player globalChat STR_R3F_LOG_mutex_action_en_cours; // French crap
+	player globalChat (localize "STR_R3F_LOG_mutex_action_en_cours"); // French crap
 } else {
 	_targetDirection = (getDir R3F_LOG_joueur_deplace_objet) + _rotateAmount; // Get the direction of the object and increment by _rotateAmount
 	_targetDirection = _targetDirection - getDir player;
@@ -22,8 +22,3 @@ if (R3F_LOG_mutex_local_verrou) then {
 	publicVariable "R3F_ARTY_AND_LOG_PUBVAR_setDir";
 	R3F_LOG_mutex_local_verrou = false;
 };
-
-
-
-
-

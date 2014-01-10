@@ -12,10 +12,8 @@
 
 if (R3F_LOG_mutex_local_verrou) then
 {
-	player globalChat STR_R3F_LOG_mutex_action_en_cours;
-}
-else
-{
+	player globalChat (localize "STR_R3F_LOG_mutex_action_en_cours");
+} else {
 	R3F_LOG_mutex_local_verrou = true;
 	
 	private ["_objet", "_remorqueur"];
@@ -138,9 +136,7 @@ else
 						if (isServer) then
 						{
 							["R3F_ARTY_AND_LOG_PUBVAR_setDir", R3F_ARTY_AND_LOG_PUBVAR_setDir] spawn R3F_ARTY_AND_LOG_FNCT_PUBVAR_setDir;
-						}
-						else
-						{
+						} else {
 							publicVariable "R3F_ARTY_AND_LOG_PUBVAR_setDir";
 						};
 					};
@@ -152,15 +148,11 @@ else
 				else {
                 	player globalChat "You can't tow more than one vehicle.";    
                 };
-			}
-			else
-			{
-				player globalChat format [STR_R3F_LOG_action_remorquer_selection_trop_loin, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
+			} else {
+				player globalChat format [(localize "STR_R3F_LOG_action_remorquer_selection_trop_loin"), getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
 			};
-		}
-		else
-		{
-			player globalChat format [STR_R3F_LOG_action_remorquer_selection_objet_transporte, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
+		} else {
+			player globalChat format [(localize "STR_R3F_LOG_action_remorquer_selection_objet_transporte"), getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
 		};
 	};
 	

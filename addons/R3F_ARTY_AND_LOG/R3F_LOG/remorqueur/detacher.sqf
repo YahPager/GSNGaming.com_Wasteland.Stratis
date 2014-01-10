@@ -12,10 +12,8 @@
 
 if (R3F_LOG_mutex_local_verrou) then
 {
-	player globalChat STR_R3F_LOG_mutex_action_en_cours;
-}
-else
-{
+	player globalChat (localize "STR_R3F_LOG_mutex_action_en_cours");
+} else {
 	R3F_LOG_mutex_local_verrou = true;
 	
 	private ["_remorqueur", "_objet"];
@@ -61,9 +59,7 @@ else
 		if (local _objet) then
 		{
 			[netId _objet] execVM "server\functions\detachTowedObject.sqf";
-		}
-		else
-		{
+		} else {
 			requestDetachTowedObject = netId _objet;
 			publicVariable "requestDetachTowedObject";
 		};
@@ -82,15 +78,11 @@ else
 			{
 				[_objet] execVM "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\deplacer.sqf";
 			};
-		}
-		else
-		{
-			player globalChat STR_R3F_LOG_action_detacher_fait;
+		} else {
+			player globalChat (localize "STR_R3F_LOG_action_detacher_fait");
 		};
-	}
-	else
-	{
-		player globalChat STR_R3F_LOG_action_detacher_impossible_pour_ce_vehicule;
+	} else {
+		player globalChat (localize "STR_R3F_LOG_action_detacher_impossible_pour_ce_vehicule");
 	};
 	
 	R3F_LOG_mutex_local_verrou = false;

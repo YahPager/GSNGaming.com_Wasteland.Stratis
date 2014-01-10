@@ -18,10 +18,8 @@ if(_onLadder == 1) exitWith{player globalChat "You can't move this object while 
 
 if (R3F_LOG_mutex_local_verrou) then
 {
-	player globalChat STR_R3F_LOG_mutex_action_en_cours;
-}
-else
-{
+	player globalChat (localize "STR_R3F_LOG_mutex_action_en_cours");
+} else {
 	R3F_LOG_mutex_local_verrou = true;
 	
 	R3F_LOG_objet_selectionne = objNull;
@@ -49,9 +47,7 @@ else
 	{
 		R3F_LOG_mutex_local_verrou = false;
 		[_objet] execVM "addons\R3F_ARTY_AND_LOG\R3F_ARTY\poste_commandement\deplacer_calculateur.sqf";
-	}
-	else
-	{
+	} else {
 		_objet setVariable ["R3F_LOG_est_deplace_par", player, true];
 		
 		R3F_LOG_joueur_deplace_objet = _objet;
@@ -91,9 +87,7 @@ else
 			_objet setVelocity [0,0,0];
 			
 			R3F_LOG_mutex_local_verrou = false;
-		}
-		else
-		{
+		} else {
 			_objet attachTo [player, [
 				0,
 				(((boundingBox _objet select 1 select 1) max (-(boundingBox _objet select 0 select 1))) max ((boundingBox _objet select 1 select 0) max (-(boundingBox _objet select 0 select 0)))) + 1,
@@ -110,9 +104,7 @@ else
 				if (isServer) then
 				{
 					["R3F_ARTY_AND_LOG_PUBVAR_setDir", R3F_ARTY_AND_LOG_PUBVAR_setDir] spawn R3F_ARTY_AND_LOG_FNCT_PUBVAR_setDir;
-				}
-				else
-				{
+				} else {
 					publicVariable "R3F_ARTY_AND_LOG_PUBVAR_setDir";
 				};
 			};
@@ -120,8 +112,8 @@ else
 			R3F_LOG_mutex_local_verrou = false;
 			R3F_LOG_force_horizontally = false;
 			
-			_action_menu_release_relative = player addAction [("<img image='client\icons\r3f_release.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_R3F_LOG_action_relacher_objet + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\relacher.sqf", false, 5, true, true];
-			_action_menu_release_horizontal = player addAction [("<img image='client\icons\r3f_releaseh.paa' color='#06ef00'/> <t color='#06ef00'>" + STR_RELEASE_HORIZONTAL + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\relacher.sqf", true, 5, true, true];
+			_action_menu_release_relative = player addAction [("<img image='client\icons\r3f_release.paa' color='#06ef00'/> <t color='#06ef00'>" + (localize "STR_R3F_LOG_action_relacher_objet") + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\relacher.sqf", false, 5, true, true];
+			_action_menu_release_horizontal = player addAction [("<img image='client\icons\r3f_releaseh.paa' color='#06ef00'/> <t color='#06ef00'>" + (localize "STR_RELEASE_HORIZONTAL") + "</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\relacher.sqf", true, 5, true, true];
 			_action_menu_45 = player addAction [("<img image='client\icons\r3f_rotate.paa' color='#06ef00'/> <t color='#06ef00'>Rotate object 45°</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\rotate.sqf", 45, 5, true, true];
 			//_action_menu_90 = player addAction [("<img image='client\ui\ui_arrow_combo_ca.paa'/> <t color='#dddd00'>Rotate object 90°</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\rotate.sqf", 90, 5, true, true];
 			//_action_menu_180 = player addAction [("<img image='client\ui\ui_arrow_combo_ca.paa'/> <t color='#dddd00'>Rotate object 180°</t>"), "addons\R3F_ARTY_AND_LOG\R3F_LOG\objet_deplacable\rotate.sqf", 180, 5, true, true];
@@ -131,14 +123,14 @@ else
 			{
 				if (vehicle player != player) then
 				{
-					player globalChat STR_R3F_LOG_ne_pas_monter_dans_vehicule;
+					player globalChat (localize "STR_R3F_LOG_ne_pas_monter_dans_vehicule");
 					player action ["eject", vehicle player];
 					sleep 1;
 				};
 				
 				if ([(velocity player) select 0,(velocity player) select 1,0] call BIS_fnc_magnitude > 3.5) then
 				{
-					player globalChat STR_R3F_LOG_courir_trop_vite;					
+					player globalChat (localize "STR_R3F_LOG_courir_trop_vite");					
 					player playMove "AmovPpneMstpSrasWpstDnon";
 					sleep 1;
 				};
