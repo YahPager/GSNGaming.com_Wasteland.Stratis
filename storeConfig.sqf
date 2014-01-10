@@ -600,11 +600,13 @@ helicoptersArray = compileFinal str
 	["MH-9 Hummingbird", "B_Heli_Light_01_F", 5000, "vehicle", ""], //little bird
 	["PO-30 Orca (Black)", "O_Heli_Light_02_unarmed_F", 6000, "vehicle", ""], //ka-60
 	["CH-49 Mohawk", "I_Heli_Transport_02_F", 8000, "vehicle", ""], //big transport chopper
+        ["WY-55 Hellcat", "I_Heli_Light_03_unarmed_F", 7000, "vehicle", ""], //WY-55 Hellcat
 	
 	["UH-80 Ghosthawk", "B_Heli_Transport_01_F", 10000, "vehicle", ""], //stealth chopper 2 miniguns
 	["UH-80 Ghosthawk (Camo)", "B_Heli_Transport_01_camo_F", 10000, "vehicle", ""], //stealth chopper 2 miniguns (green camo)
 	["AH-9 Pawnee", "B_Heli_Light_01_armed_F", 12000, "vehicle", ""], //little bird with guns and missiles
 	["PO-30 Orca", "O_Heli_Light_02_F", 13000, "vehicle", ""], //armed ka-60
+        ["WY-55 Hellcat", "I_Heli_Light_03_F", 14000, "vehicle", ""], //Armed WY-55 Hellcat
 	["AH-99 Blackfoot", "B_Heli_Attack_01_F", 20000, "vehicle", ""], //attack chopper
 	["Mi-48 Kajman", "O_Heli_Attack_02_F", 25000, "vehicle", ""], //attack chopper with gunner
 	["Mi-48 Kajman (Black)", "O_Heli_Attack_02_black_F", 25000, "vehicle", ""] //attack chopper with gunner
