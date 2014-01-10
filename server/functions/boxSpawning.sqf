@@ -126,11 +126,11 @@ _boxList =
 				[_box, _boxItems] call processItems;
 				
 				// Extra loadout
-				/*_boxItems =
+				_boxItems =
 				[
 					["wep", "hgun_Pistol_heavy_01_F", 1, 5],
 					["mag", "9Rnd_45ACP_Mag", 5]
-				];*/
+				];
 				
 				[_box, _boxItems] call processItems;
 			};
