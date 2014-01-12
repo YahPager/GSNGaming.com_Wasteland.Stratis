@@ -143,6 +143,7 @@
 		</Key>		
 		<Key ID="STR_WL_Errors_BeaconTooMany">
 			<English>You cannot take more spawn beacons!</English>
+		</Key>
 	</Package>
         <Package name="R3F Artillery and Logistic">
                 <Key ID="STR_R3F_LOG_action_heliporter">
