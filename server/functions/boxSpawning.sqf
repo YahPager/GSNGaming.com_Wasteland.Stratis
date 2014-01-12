@@ -12,13 +12,10 @@ _counter = 0;
 
 _boxList =
 [
-"Box_NATO_Wps_F",
 "Box_NATO_WpsLaunch_F",
 "Box_NATO_WpsSpecial_F",
-"Box_East_Wps_F",
 "Box_East_WpsLaunch_F",
 "Box_East_WpsSpecial_F",
-"Box_IND_Wps_F",
 "Box_IND_WpsLaunch_F",
 "Box_IND_WpsSpecial_F"
 ];
@@ -39,52 +36,6 @@ _boxList =
 		
 		switch (true) do
 		{
-			// Basic Weapons box contents
-			case (["_Wps_F", _boxClass] call fn_findString != -1):
-			{
-				switch (true) do
-				{
-					case (_box isKindOf "Box_NATO_Wps_F"):
-					{
-						_boxItems =
-						[
-							["wep", "arifle_MX_F", 5, 4],
-							["wep", "arifle_MX_SW_F", 2, 4],
-							["wep", "SMG_01_F", 1, 5] // Vermin
-						]
-					};
-					case (_box isKindOf "Box_East_Wps_F"):
-					{
-						_boxItems =
-						[
-							["wep", "arifle_Katiba_F", 5, 4],
-							["wep", "LMG_Zafir_F", 2, 4],
-							["wep", "SMG_02_F", 1, 5] // Sting
-						]
-					};
-					case (_box isKindOf "Box_IND_Wps_F"):
-					{
-						_boxItems =
-						[
-							["wep", "arifle_Mk20_F", 5, 4],
-							["wep", "LMG_Mk200_F", 2, 4],
-							["wep", "hgun_PDW2000_F", 1, 5]
-						]
-					};
-					default { _boxItems = [] };
-				};
-				
-				[_box, _boxItems] call processItems;
-				
-				// Extra loadout
-				_boxItems =
-				[
-					["wep", "hgun_Pistol_heavy_02_F", 1, 5],
-					["mag", "6Rnd_45ACP_Cylinder", 5]
-				];
-				
-				[_box, _boxItems] call processItems;
-			};
                         // Basic Launcher Weapons box contents
 			case (["_WpsLaunch_F", _boxClass] call fn_findString != -1):
 			{

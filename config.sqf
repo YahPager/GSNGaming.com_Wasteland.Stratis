@@ -34,7 +34,7 @@ cityList = compileFinal str
 	["Town_22", 350, "Smallville"],
 	["Town_23", 100, "Tsoukalia"],
 	["Town_24", 100, "Jay Cove"],
-	["Town_25", 100, "Wilderness"]
+	["Town_25", 100, "Wilderness"] //4950 Sq. Meters
 ];
 
 militarylist = compileFinal str
