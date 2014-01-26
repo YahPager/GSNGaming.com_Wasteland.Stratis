@@ -89,12 +89,12 @@ if (isServer) then
 							_npc addUniform _classname;
 						};
 					};
-					case "switchMove":
+					case "playMove":
 					{
 						if (_classname != "") then
 						{
-							diag_log format ["Applying %1 as switchMove for %2", _classname, _identity];
-							_npc switchMove _classname;
+							diag_log format ["Applying %1 as playMove for %2", _classname, _identity];
+							_npc playMove _classname;
 						};
 					};
 				};

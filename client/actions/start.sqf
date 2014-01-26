@@ -1,5 +1,6 @@
 #define DURATION_STEP 1
 #define DURATION_FAILED 5
+
 //TODO: Fix the jerkiness (playMove vs switchMove)
 private ["_length", "_animation", "_check", "_args", "_success", "_failure", "_complete", "_start", "_previousAnim"];
 
@@ -16,7 +17,7 @@ _args = _this select 3;
 _complete = true;
 _start = time;
 _previousAnim = animationState player;
-player switchMove _animation;
+player playMove _animation;
 _failed = false;
 
 createDialog "ActionGUI";
@@ -27,7 +28,7 @@ _progressbar = _display displayCtrl 10101;
 _struct_text = _display displayCtrl 10102;
 waitUntil {
     private ["_progress", "_result", "_text"];
-    if (animationState player != _animation) then {player switchMove _animation};
+    if (animationState player != _animation) then {player playMove _animation};
     if not a3w_actions_mutex then {
         _failed = true;
         ["Action Cancelled", DURATION_FAILED] call a3w_actions_notify;
@@ -46,7 +47,7 @@ waitUntil {
     };
     _start +_length < time or _failed;
 };
-player switchMove _previousAnim;
+player playMove _previousAnim;
 closeDialog 10101;
 a3w_actions_mutex = false;
 not _failed;

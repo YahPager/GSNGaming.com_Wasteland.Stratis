@@ -29,7 +29,7 @@ if (isServer) then
     _unit addUniform "U_B_Wetsuit";
     _unit addGoggles "G_Diving";
     _unit setPosATL [1,1,1];
-    _unit switchMove "";
+    _unit playMove "";
 
     _this spawn
     {
