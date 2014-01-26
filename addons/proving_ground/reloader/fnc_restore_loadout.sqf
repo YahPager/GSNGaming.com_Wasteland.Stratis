@@ -1,5 +1,8 @@
 #include "defs.hpp"
 //diag_log "restore_loadout";
+
+private ["_current_magazines","_default_magazines","_turret","_weapons","_subturrets","_veh","_veh_type","_default_magazines_hull","_turrets"];
+
 _veh = GET_SELECTED_VEHICLE;
 _veh_type = GET_SELECTED_DATA(balca_loader_vehicle_list_IDC);
 
@@ -10,7 +13,7 @@ if ((_veh isKindOf "Plane")or(_veh isKindOf "Helicopter")or(_veh isKindOf "Car")
 	_current_magazines = magazines _veh;
 	{_veh removeMagazine _x;} forEach _current_magazines;
 	{_veh addMagazine _x;} forEach _default_magazines_hull;
-}else{
+} else {
 	_current_magazines = _veh magazinesTurret [-1];
 	{_veh removeMagazineTurret [_x,-1];} forEach _current_magazines;
 	{_veh addMagazineTurret [_x,-1];} forEach _default_magazines_hull;
@@ -21,7 +24,6 @@ _turrets= configFile >> "CfgVehicles" >> _veh_type >> "Turrets";
 for "_i" from 0 to (count _turrets)-1 do {
 	_turret = _turrets select _i;
 	_weapons = _veh weaponsTurret [_i];
-
 
 	if !(isNil {_weapons select 0}) then
 	{

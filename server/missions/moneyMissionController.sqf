@@ -11,13 +11,12 @@ private ["_MoneyMissions", "_MoneyMissionsOdds", "_mission", "_nextMission", "_m
 
 diag_log "WASTELAND SERVER - Started Money Mission State";
 
-_MoneyMissions = 
-/*[
+_MoneyMissions = /*
+[ // increase the number (weight) to increase the missions chance to be selected
 	["mission_MoneyShipment", 0],
 	["mission_SunkenTreasure", 0]
-//  	["mission_MobMoney", 0]
-
-];*/
+	["mission_MobMoney", 0]
+]; */
 
 _MoneyMissionsOdds = [];
 {
@@ -40,5 +39,5 @@ while {true} do
 	[_hint] call hintBroadcast;
 	
 	waitUntil{sleep 0.1; scriptDone _missionRunning};
-    sleep 5; 
+	sleep 5; 
 };

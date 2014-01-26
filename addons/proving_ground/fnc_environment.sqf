@@ -3,11 +3,11 @@
 #define GET_CTRL(a) (GET_DISPLAY displayCtrl ##a)
 #define GET_SELECTED_DATA(a) ([##a] call {_idc = _this select 0;_selection = (lbSelection GET_CTRL(_idc) select 0);if (isNil {_selection}) then {_selection = 0};(GET_CTRL(_idc) lbData _selection)})
 
+private ["_wind","_vd","_grass","_fog","_overcast","_rain","_wind_dir","_mode"];
 
 _mode = _this select 0;
 switch (_mode) do {
-case 0: {//init
-
+	case 0: {//init
 		GET_CTRL(balca_env_VD_IDC) ctrlSetText str viewDistance;
 		GET_CTRL(balca_env_grass_IDC) ctrlSetText str 0;
 		GET_CTRL(balca_env_fog_IDC) ctrlSetText str fog;
@@ -16,10 +16,9 @@ case 0: {//init
 		_wind = wind;
 		GET_CTRL(balca_env_wind_IDC) ctrlSetText str (_wind distance [0,0,0]);
 		GET_CTRL(balca_env_wind_dir_IDC) ctrlSetText str ((((_wind select 0) atan2 (_wind select 1))+180)%180);
-
-
 	};
-case 1: {//apply from editbox
+
+	case 1: {//apply from editbox
 		_vd = (parseNumber ctrlText GET_CTRL(balca_env_VD_IDC)) max 0 min 10000;
 		_grass = (parseNumber ctrlText GET_CTRL(balca_env_grass_IDC)) max 0 min 50;
 		_fog = (parseNumber ctrlText GET_CTRL(balca_env_fog_IDC)) max 0 min 1;

@@ -6,7 +6,11 @@
 
 //if (!isServer) exitWith {closeDialog 0};
 
+private ["_unit","_props","_tdist","_tspeed","_tdir","_rprops","_rdist","_rspeed","_rdir","_air_wp_dist","_target_mode","_kindOf","_filter","_res","_veh","_types","_opt","_vehicle","_cfgvehicles","_selection","_idc","_turret","_weapons","_magazines","_subturrets","_displayName","_armor","_maxSpeed","_turrets","_lb","_text","_unit_type","_core","_dir","_pos","_wp","_grp","_reset_land","_map_enabled","_markerName","_count","_addMarker","_clearMarkers","_drawMarkers","_mode"];
+
 _addMarker = {
+	private ["_name","_pos","_text"];
+
 	_name = _this select 0;
 	_pos = _this select 1;
 	_text = _this select 2;
@@ -24,6 +28,8 @@ _clearMarkers = {
 };
 
 _drawMarkers = {
+	private ["_markerName","_forEachIndex","_pos","_text","_addMarker","_grp"];
+
 	_grp = _this;
 	{if ((waypointType _x)=="MOVE") then {
 		_markerName = format ["PG_WPMarker%1",str (_forEachIndex+1)];
@@ -33,28 +39,26 @@ _drawMarkers = {
 	};} forEach waypoints _grp;
 };
 
-
-
 _mode = _this select 0;
 _opt = _this select 1;
 switch (_mode) do {
-case 0: {//init;
+	case 0: {//init;
 		_target_mode = if isNil{_opt} then {//restore values
-			GET_CTRL(balca_target_mode_IDC) lbAdd 'Static land';
-			GET_CTRL(balca_target_mode_IDC) lbAdd 'Random land';
-			GET_CTRL(balca_target_mode_IDC) lbAdd 'AI land';
-			GET_CTRL(balca_target_mode_IDC) lbAdd 'AI air';
-			GET_CTRL(balca_target_mode_IDC) lbSetCurSel PG_get(target_mode);
-			GET_CTRL(balca_target_map_IDC) ctrlShow false;
-			PG_get(target_mode)
+		GET_CTRL(balca_target_mode_IDC) lbAdd 'Static land';
+		GET_CTRL(balca_target_mode_IDC) lbAdd 'Random land';
+		GET_CTRL(balca_target_mode_IDC) lbAdd 'AI land';
+		GET_CTRL(balca_target_mode_IDC) lbAdd 'AI air';
+		GET_CTRL(balca_target_mode_IDC) lbSetCurSel PG_get(target_mode);
+		GET_CTRL(balca_target_map_IDC) ctrlShow false;
+		PG_get(target_mode)
 		}else{//onLBSelChanged
-			PG_set(target_mode,_opt);
-			{
-				_unit = _x select 0;
-				deleteVehicle _unit;
-				if !(_unit isKindOf "Man") then {{deleteVehicle _x} forEach units (_x select 2);};
-			} forEach PG_get(LAND_TARGETS);
-			_opt
+		PG_set(target_mode,_opt);
+		{
+			_unit = _x select 0;
+			deleteVehicle _unit;
+			if !(_unit isKindOf "Man") then {{deleteVehicle _x} forEach units (_x select 2);};
+		} forEach PG_get(LAND_TARGETS);
+		_opt
 		};
 		switch _target_mode do {
 			case 0: {
@@ -68,7 +72,7 @@ case 0: {//init;
 				_tspeed = _props select 1;
 				_tdir = _props select 2;
 				GET_CTRL(balca_target_distance_IDC) ctrlSetText str _tdist;
-				GET_CTRL(balca_target_speed_IDC) ctrlSetText  str _tspeed;
+				GET_CTRL(balca_target_speed_IDC) ctrlSetText str _tspeed;
 				GET_CTRL(balca_target_direction_IDC) ctrlSetText str _tdir;
 			};
 			case 1: {
@@ -87,7 +91,7 @@ case 0: {//init;
 				GET_CTRL(balca_target_rdistance_IDC) ctrlSetText str _tdist;
 				GET_CTRL(balca_target_rdirection_IDC) ctrlSetText str _tdir;
 				GET_CTRL(balca_target_distance_rand_IDC) ctrlSetText str _rdist;
-				GET_CTRL(balca_target_speed_rand_IDC) ctrlSetText  str _rspeed;
+				GET_CTRL(balca_target_speed_rand_IDC) ctrlSetText str _rspeed;
 				GET_CTRL(balca_target_direction_rand_IDC) ctrlSetText str _rdir;
 			};
 			case 2: {
@@ -111,8 +115,8 @@ case 0: {//init;
 			default {};
 		};
 	};
-case 1: {
-		
+	case 1: {
+
 		_kindOf = ["TargetBase"];
 		_filter = [];
 		switch (_opt) do {
@@ -137,24 +141,22 @@ case 1: {
 					GET_CTRL(balca_target_vehlist_IDC) lbSetData [(lbSize GET_CTRL(balca_target_vehlist_IDC))-1,_opt];
 					if !(_kindOf select 0 in ["TargetBase","CAManBase"]) then {
 						GET_CTRL(balca_target_vehlist_IDC) lbSetPicture [(lbSize GET_CTRL(balca_target_vehlist_IDC))-1,getText(_vehicle >> "picture")];
-					}else{
+					} else {
 						GET_CTRL(balca_target_vehlist_IDC) lbSetPicture [(lbSize GET_CTRL(balca_target_vehlist_IDC))-1,getText(_vehicle >> "icon")];
 					};
-				
-				
 				};
 			};
 		};
 		lbSort GET_CTRL(balca_target_vehlist_IDC);
 	};
-case 2: {//info
+	case 2: {//info
 		_opt = GET_SELECTED_DATA(balca_target_vehlist_IDC);
 		GET_CTRL(balca_target_vehicle_shortcut_IDC) ctrlSetText (getText(configFile >> "CfgVehicles" >> _opt >> "picture"));
 		_vehicle = (configFile >> "CfgVehicles" >> _opt);
 		_displayName = getText(_vehicle >> "displayName");
 		_armor = getNumber(_vehicle >> "armor");
 		_maxSpeed = getNumber(_vehicle >> "maxSpeed");
-		_weapons =  getArray(_vehicle >> "weapons");
+		_weapons = getArray(_vehicle >> "weapons");
 		_magazines = getArray(_vehicle >> "magazines");
 		_turrets= (_vehicle >> "Turrets");
 		for "_i" from 0 to (count _turrets)-1 do {
@@ -170,74 +172,76 @@ case 2: {//info
 		};
 		_lb = parseText "<br/>";
 		_text = composeText [str configName(_vehicle),_lb,
-			"DisplayName: ",str _displayName,_lb,
-			"Armor: ", str _armor,_lb,
-			"MaxSpeed: ", str _maxSpeed,_lb,
-			"Weapons: ", str _weapons,_lb];
+		"DisplayName: ",str _displayName,_lb,
+		"Armor: ", str _armor,_lb,
+		"MaxSpeed: ", str _maxSpeed,_lb,
+		"Weapons: ", str _weapons,_lb];
 		GET_CTRL(balca_target_veh_info_IDC) ctrlSetStructuredText _text;
 	};
-case 3: {//add target
-		_unit_type = GET_SELECTED_DATA(balca_target_vehlist_IDC);
+	case 3: {//add target
+	_unit_type = GET_SELECTED_DATA(balca_target_vehlist_IDC);
 		if (PG_get(target_mode)<3) then {//land
 			[-1,_unit_type] call PG_get(FNC_CREATE_LAND_TARGET);
 		}else {//air AI
 			if (_unit_type isKindOf "Air") then {
 				[-1,_unit_type] call PG_get(FNC_CREATE_AIR_TARGET);
-			}else{
+			} else {
 				hint "It can not fly";
 			};
 		};
 	};
-case 4: {//reset
-			_core = PG_get(CORE);
-			_dir = getDir _core;
-			_pos = getPos _core;
-			switch PG_get(target_mode) do {
-				case 2: {//land AI
-					{deleteWaypoint _x} forEach waypoints PG_get(TARGET_GRP);
-					[6] call PG_get(FNC_target);
-				};
-				case 3: {//air AI
-					_air_wp_dist = parseNumber ctrlText GET_CTRL(balca_target_air_AI_dist_IDC);
-					PG_set(air_wp_dist,_air_wp_dist);
-					[6] call PG_get(FNC_target);
-				};
-				default {};
+	case 4: {//reset
+		_core = PG_get(CORE);
+		_dir = getDir _core;
+		_pos = getPos _core;
+		switch PG_get(target_mode) do {
+			case 2: {//land AI
+			{deleteWaypoint _x} forEach waypoints PG_get(TARGET_GRP);
+			[6] call PG_get(FNC_target);
 			};
+			case 3: {//air AI
+			_air_wp_dist = parseNumber ctrlText GET_CTRL(balca_target_air_AI_dist_IDC);
+			PG_set(air_wp_dist,_air_wp_dist);
+			[6] call PG_get(FNC_target);
+			};
+			default {};
+		};
 	};
 
-case 5: {//clear targets
-		{
-			deleteVehicle (_x select 0);
-			{deleteVehicle _x} forEach units(_x select 2);
-			deleteGroup(_x select 2);
-		}forEach PG_get(LAND_TARGETS);
-		PG_set(LAND_TARGETS,[]);
-		{
-			deleteVehicle (_x select 0);
-			{deleteVehicle _x} forEach units(_x select 2);
-			deleteGroup(_x select 2);
-		}forEach PG_get(AIR_TARGETS);
-		PG_set(AIR_TARGETS,[]);
+	case 5: {//clear targets
+	{
+		deleteVehicle (_x select 0);
+		{deleteVehicle _x} forEach units(_x select 2);
+		deleteGroup(_x select 2);
+	}forEach PG_get(LAND_TARGETS);
+	PG_set(LAND_TARGETS,[]);
+	{
+		deleteVehicle (_x select 0);
+		{deleteVehicle _x} forEach units(_x select 2);
+		deleteGroup(_x select 2);
+	}forEach PG_get(AIR_TARGETS);
+	PG_set(AIR_TARGETS,[]);
 	};
-case 6: {//apply
-		_reset_land = {
-				{
-					_unit = _x select 0;
-					deleteVehicle _unit;
-					if !(_unit isKindOf "Man") then {{deleteVehicle _x} forEach units (_x select 2);};
-				} forEach PG_get(LAND_TARGETS);
-			};
+	case 6: {//apply
+	_reset_land = {
+		private ["_unit"];
+		{
+			_unit = _x select 0;
+			deleteVehicle _unit;
+			if !(_unit isKindOf "Man") then {{deleteVehicle _x} forEach units (_x select 2);};
+		} forEach PG_get(LAND_TARGETS);
+	};
 		_core = PG_get(CORE);
 		_dir = getDir _core;
 		_pos = getPos _core;
 		_props = PG_get(TARGET_PROPS);
 		switch PG_get(target_mode) do {
 			case 0: {//land static
-				GVAR(target_props) = [parseNumber ctrlText GET_CTRL(balca_target_distance_IDC),parseNumber ctrlText GET_CTRL(balca_target_speed_IDC),(parseNumber ctrlText GET_CTRL(balca_target_direction_IDC))%360];
-				call PG_get(FNC_MOVE_LAND_TARGETS);//reset position of targets
+			GVAR(target_props) = [parseNumber ctrlText GET_CTRL(balca_target_distance_IDC),parseNumber ctrlText GET_CTRL(balca_target_speed_IDC),(parseNumber ctrlText GET_CTRL(balca_target_direction_IDC))%360];
+			call PG_get(FNC_MOVE_LAND_TARGETS);//reset position of targets
 				if ((PG_get(TARGET_PROPS) select 1)>0) then {//if speed>0 start moving
 					[] spawn {
+						private ["_shift_inc","_shift","_delay","_speed"];
 						_shift = 0;
 						_delay = 0.03;
 						_speed = (PG_get(TARGET_PROPS) select 1);
@@ -254,8 +258,8 @@ case 6: {//apply
 				[] call _reset_land;
 			};
 			case 1: {//land random
-				GVAR(target_props) = [parseNumber ctrlText GET_CTRL(balca_target_rdistance_IDC),0,parseNumber ctrlText GET_CTRL(balca_target_rdirection_IDC)];
-				GVAR(target_props_rand) = [parseNumber ctrlText GET_CTRL(balca_target_distance_rand_IDC),parseNumber ctrlText GET_CTRL(balca_target_speed_rand_IDC),parseNumber ctrlText GET_CTRL(balca_target_direction_rand_IDC)];
+			GVAR(target_props) = [parseNumber ctrlText GET_CTRL(balca_target_rdistance_IDC),0,parseNumber ctrlText GET_CTRL(balca_target_rdirection_IDC)];
+			GVAR(target_props_rand) = [parseNumber ctrlText GET_CTRL(balca_target_distance_rand_IDC),parseNumber ctrlText GET_CTRL(balca_target_speed_rand_IDC),parseNumber ctrlText GET_CTRL(balca_target_direction_rand_IDC)];
 				[] call _reset_land;
 			};
 			case 2: {//land AI
@@ -264,7 +268,7 @@ case 6: {//apply
 					//_wp = _grp addWaypoint [[_pos select 0,_pos select 1],0];
 					//_wp setWaypointType "CYCLE";
 					[7] call PG_get(FNC_target);
-				}else{
+				} else {
 					[] call _clearMarkers;
 					{deleteWaypoint [_grp,0]} forEach (waypoints _grp);
 					_wp = _grp addWaypoint [[(_pos select 0)+20*sin(_dir+90)+(_props select 0)*sin(_dir),(_pos select 1)+20*cos(_dir+90)+(_props select 0)*cos(_dir)],0,0];
@@ -284,7 +288,7 @@ case 6: {//apply
 					//_wp = _grp addWaypoint [[_pos select 0,_pos select 1],0];
 					//_wp setWaypointType "CYCLE";
 					[7] call PG_get(FNC_target);
-				}else{
+				} else {
 					_air_wp_dist = parseNumber ctrlText GET_CTRL(balca_target_air_AI_dist_IDC);
 					{deleteWaypoint [_grp,0]} forEach (waypoints PG_get(AIR_TARGET_GRP));
 					PG_set(air_wp_dist,_air_wp_dist);
@@ -308,25 +312,25 @@ case 6: {//apply
 			default {};
 		};
 	};
-case 7: {//toggle map
-		_map_enabled = ctrlVisible balca_target_map_IDC;
-		if _map_enabled then {
-			GET_CTRL(balca_target_map_IDC) ctrlShow false;
-			GET_CTRL(balca_target_vehlist_IDC) ctrlShow true;
-			GET_CTRL(balca_target_vehicle_shortcut_IDC) ctrlShow true;
-			GET_CTRL(balca_target_veh_info_IDC) ctrlShow true;
-			[] call _clearMarkers;
-		}else{
-			GET_CTRL(balca_target_map_IDC) ctrlShow true;
-			GET_CTRL(balca_target_vehlist_IDC) ctrlShow false;
-			GET_CTRL(balca_target_vehicle_shortcut_IDC) ctrlShow false;
-			GET_CTRL(balca_target_veh_info_IDC) ctrlShow false;
-			_grp = switch PG_get(target_mode) do {
-				case 2: {//land AI
-					PG_get(target_grp);
-				};
+	case 7: {//toggle map
+	_map_enabled = ctrlVisible balca_target_map_IDC;
+	if _map_enabled then {
+		GET_CTRL(balca_target_map_IDC) ctrlShow false;
+		GET_CTRL(balca_target_vehlist_IDC) ctrlShow true;
+		GET_CTRL(balca_target_vehicle_shortcut_IDC) ctrlShow true;
+		GET_CTRL(balca_target_veh_info_IDC) ctrlShow true;
+		[] call _clearMarkers;
+	} else {
+		GET_CTRL(balca_target_map_IDC) ctrlShow true;
+		GET_CTRL(balca_target_vehlist_IDC) ctrlShow false;
+		GET_CTRL(balca_target_vehicle_shortcut_IDC) ctrlShow false;
+		GET_CTRL(balca_target_veh_info_IDC) ctrlShow false;
+		_grp = switch PG_get(target_mode) do {
+			case 2: {//land AI
+			PG_get(target_grp);
+			};
 				case 3: {//air AI
-					PG_get(air_target_grp)
+				PG_get(air_target_grp)
 				};
 				default {};
 			};
@@ -334,7 +338,7 @@ case 7: {//toggle map
 			hint "Double click on map to add new waypoint";
 		};
 	};
-case 8: {//clear waypoint
+	case 8: {//clear waypoint
 		_grp = switch PG_get(target_mode) do {
 			case 2: {//land AI
 				PG_get(target_grp);
@@ -344,10 +348,10 @@ case 8: {//clear waypoint
 			};
 			default {};
 		};
-		{deleteWaypoint [_grp,0]} forEach (waypoints _grp);
-		[] call _clearMarkers;
+			{deleteWaypoint [_grp,0]} forEach (waypoints _grp);
+			[] call _clearMarkers;
 	};
-case 9: {//add waypoint
+	case 9: {//add waypoint
 		_grp = switch PG_get(target_mode) do {
 			case 2: {//land AI
 				PG_get(target_grp);
@@ -357,21 +361,21 @@ case 9: {//add waypoint
 			};
 			default {};
 		};
-		_count = (count (waypoints _grp)) max 1;
-		deleteWaypoint [_grp,_count-1];
-		_wp = _grp addWaypoint [_opt,0,_count-1];
-		_wp setWaypointType "MOVE";
-		_wp setWaypointCompletionRadius 30;
-		if (ctrlVisible balca_target_map_IDC) then {
-			_markerName = format ["PG_WPMarker%1",str (_count-1)];
-			_pos = waypointPosition _wp;
-			_text = str (_count-1) + " " + str (waypointType _wp);
-			[_markerName,_pos,_text] call _addMarker
+			_count = (count (waypoints _grp)) max 1;
+			deleteWaypoint [_grp,_count-1];
+			_wp = _grp addWaypoint [_opt,0,_count-1];
+			_wp setWaypointType "MOVE";
+			_wp setWaypointCompletionRadius 30;
+			if (ctrlVisible balca_target_map_IDC) then {
+				_markerName = format ["PG_WPMarker%1",str (_count-1)];
+				_pos = waypointPosition _wp;
+				_text = str (_count-1) + " " + str (waypointType _wp);
+				[_markerName,_pos,_text] call _addMarker
+			};
+				_wp = _grp addWaypoint [_opt,0,_count];
+				_wp setWaypointType "CYCLE";
 		};
-		_wp = _grp addWaypoint [_opt,0,_count];
-		_wp setWaypointType "CYCLE";
-	};
-case 10: {//unload
+	case 10: {//unload
 		[] call _clearMarkers;
 	};
 };

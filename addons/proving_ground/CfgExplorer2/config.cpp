@@ -68,29 +68,29 @@
 #define ST_TITLE          ST_TITLE_BAR + ST_CENTER
 
 // Color defines
-// #define CA_UI_HUD_Green				{0.600,0.8392,0.4706,1.0}
-// #define CA_IGUI_GreenDark			{0.659,0.863,0.549,1}
-// #define CA_IGUI_Green				{0.6000,0.8392,0.4706,1.0}
+// #define CA_UI_HUD_Green	{0.600,0.8392,0.4706,1.0}
+// #define CA_IGUI_GreenDark	{0.659,0.863,0.549,1}
+// #define CA_IGUI_Green	{0.6000,0.8392,0.4706,1.0}
 // #define CA_IGUI_Green_Transparent	{0.6000,0.8392,0.4706,0.75}
-// #define CA_IGUI_Red					{0.706,0.0745,0.0196,1}
-// #define CA_IGUI_Orange				{0.863,0.584,0.0,1}
-// #define CA_IGUI_Blue				{0.196,0.592,0.706, 1}
-// #define CA_IGUI_Grey				{0.606,0.606,0.606,1}
-// #define CA_IGUI_Background			{0.1882,0.2588,0.1490,0.76}
-// #define CA_IGUI_DarkGreen			{0.424,0.651,0.247, 1}
-// #define Color_White					{0.95, 0.95, 0.95, 1}
-// #define Color_Black					{0.023529, 0, 0.0313725, 1}
-// #define Color_Gray					{1, 1, 1, 0.5}
-// #define Color_Orange				{1, 0.537, 0, 1}
+// #define CA_IGUI_Red	{0.706,0.0745,0.0196,1}
+// #define CA_IGUI_Orange	{0.863,0.584,0.0,1}
+// #define CA_IGUI_Blue	{0.196,0.592,0.706, 1}
+// #define CA_IGUI_Grey	{0.606,0.606,0.606,1}
+// #define CA_IGUI_Background	{0.1882,0.2588,0.1490,0.76}
+// #define CA_IGUI_DarkGreen	{0.424,0.651,0.247, 1}
+// #define Color_White	{0.95, 0.95, 0.95, 1}
+// #define Color_Black	{0.023529, 0, 0.0313725, 1}
+// #define Color_Gray	{1, 1, 1, 0.5}
+// #define Color_Orange	{1, 0.537, 0, 1}
 
-// #define Color_OA_Text				{0.8784, 0.8471, 0.651, 1}
+// #define Color_OA_Text	{0.8784, 0.8471, 0.651, 1}
 
 
 // Text Size
-#define TextSize_small 		SafeZoneH * 0.016
-#define TextSize_normal 	SafeZoneH * 0.018
-#define TextSize_big        SafeZoneH * 0.022
-#define TextSize_title 		SafeZoneH * 0.040
+#define TextSize_small	SafeZoneH * 0.016
+#define TextSize_normal	SafeZoneH * 0.018
+#define TextSize_big	SafeZoneH * 0.022
+#define TextSize_title	SafeZoneH * 0.040
 
 
 

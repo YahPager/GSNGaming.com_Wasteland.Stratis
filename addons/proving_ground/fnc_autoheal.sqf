@@ -2,10 +2,11 @@
 if PG_get(Autoheal) then {
 	PG_set(Autoheal,false);
 	hint "Autoheal disabled";
-}else{
+} else {
 	hint "Autoheal enabled";
 	PG_set(Autoheal,true);
 	[] spawn {
+		private ["_veh","_p_hit_EH","_p_dam_EH","_veh_hit_EH","_veh_dam_EH"];
 		while {PG_get(Autoheal)} do {
 			sleep 0.5;
 			_cursortarget = cursorTarget;

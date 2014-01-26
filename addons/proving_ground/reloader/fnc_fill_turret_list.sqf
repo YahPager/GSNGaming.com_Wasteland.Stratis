@@ -1,5 +1,8 @@
 #include "defs.hpp"
+
 disableSerialization;
+private ["_default_magazines","_turret","_weapons","_subturrets","_turrets","_display_name","_veh","_veh_type"];
+
 _veh = GET_SELECTED_VEHICLE;
 _veh_type = GET_SELECTED_DATA(balca_loader_vehicle_list_IDC);
 GET_CTRL(balca_loader_vehicle_shortcut_IDC) ctrlSetText (getText(configFile >> "CfgVehicles" >> typeOf(_veh) >> "picture"));
@@ -24,7 +27,7 @@ if (isClass(configFile >> "CfgVehicles" >> _veh_type >> "Turrets")) then {
 		{
 			GET_CTRL(balca_loader_turret_list_IDC) lbAdd getText(_turret >> "gunnerName");
 			GET_CTRL(balca_loader_turret_list_IDC) lbSetValue [(lbSize GET_CTRL(balca_loader_turret_list_IDC))-1,_i];
-			_default_magazines = _default_magazines +  getArray(_turret >> "magazines");
+			_default_magazines = _default_magazines + getArray(_turret >> "magazines");
 		};
 		_subturrets = _turret >> "Turrets";
 		for "_j" from 0 to (count _subturrets)-1 do {
@@ -34,13 +37,15 @@ if (isClass(configFile >> "CfgVehicles" >> _veh_type >> "Turrets")) then {
 			{
 				GET_CTRL(balca_loader_turret_list_IDC) lbAdd getText(_turret >> "gunnerName");
 				GET_CTRL(balca_loader_turret_list_IDC) lbSetValue [(lbSize GET_CTRL(balca_loader_turret_list_IDC))-1,-2-_i*10-_j];
-				_default_magazines = _default_magazines +  getArray(_turret >> "magazines");
+				_default_magazines = _default_magazines + getArray(_turret >> "magazines");
 			};
 		};
 	};
-}else{};
+} else {
+};
+
 lbClear GET_CTRL(balca_loader_default_loadout_IDC);
-{	
+{
 	_display_name = (getText(configFile >> "CfgMagazines" >> _x >> "displayName"));
 	if (_display_name=="") then {
 		GET_CTRL(balca_loader_default_loadout_IDC) lbAdd str _x;

@@ -17,8 +17,6 @@
 #define balca_loader_load_btn_IDC (balca_loader_main_IDD + 11)
 #define balca_loader_unload_btn_IDC (balca_loader_main_IDD + 12)
 
-
-
 #define GET_DISPLAY (findDisplay balca_loader_main_IDD)
 #define GET_CTRL(a) (GET_DISPLAY displayCtrl ##a)
 
@@ -31,5 +29,3 @@
 #define CHANGABLE_WEAPONS [["AirBombLauncher","Ch29Launcher","Ch29Launcher_Su34","R73Launcher_2","R73Launcher","HeliBombLauncher"],["Mk82BombLauncher","Mk82BombLauncher_6","MaverickLauncher","BombLauncherA10"],["BombLauncherF35", "SidewinderLaucher_F35"],["ACE_R73Launcher","ACE_R27Launcher","ACE_Kh25Launcher","ACE_KAB500KRLauncher","ACE_KAB500LLauncher"]]
 
 #define BALCA_RELOADER_DEBUG (true)
-
-

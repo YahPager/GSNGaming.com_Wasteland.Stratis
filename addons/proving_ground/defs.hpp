@@ -8,7 +8,6 @@
 #define balca_VC_vehicle_shortcut_IDC __idCounter(12)
 #define balca_VC_veh_info_IDC __idCounter(13)
 
-
 #define balca_debug_WC_IDD __idCounter(20)
 
 #define balca_WC_weaplist_IDC __idCounter(21)
@@ -47,7 +46,6 @@
 #define balca_target_land_AI_dist_IDC __idCounter(58)
 #define balca_target_air_AI_dist_IDC __idCounter(59)
 
-
 #define balca_sound_player_IDD __idCounter(70)
 #define balca_soundlist_IDC __idCounter(71)
 
@@ -67,5 +65,3 @@
 #define balca_env_rain_IDC __idCounter(92)
 #define balca_env_wind_IDC __idCounter(93)
 #define balca_env_wind_dir_IDC __idCounter(94)
-
-

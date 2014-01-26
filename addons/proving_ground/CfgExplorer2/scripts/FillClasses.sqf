@@ -1,6 +1,8 @@
 #include "macros.hpp"
+
+private ["_curConfig","_preIndex","_Entry","_cfgName","_index"];
+
 disableSerialization;
-private ["_curConfig", "_preIndex", "_i", "_Entry", "_cfgName", "_index"];
 
 // ***
 // *** Get Parameter
@@ -14,23 +16,21 @@ if ((typeName _curConfig) != "CONFIG") then
 // ***
 // *** Check for second Parameter
 // ***
-if ((count _this) > 1) then 
+if ((count _this) > 1) then
 {
-	_preIndex = _this select 1;  
-} 
-else
-{
+	_preIndex = _this select 1;
+} else {
 	_preIndex = 0;
 };
 
 // ***
 // *** Get Classes and add them to class listbox
 // ***
-for "_i" from 0 to ((count _curConfig) - 1) do 
-{	
+for "_i" from 0 to ((count _curConfig) - 1) do
+{        
 	_Entry = (_curConfig) select _i;
 	_cfgName = configName _Entry;
-	
+        
 	if (isClass _Entry) then
 	{
 		_index = lbAdd [110, format["%1",_cfgName]];

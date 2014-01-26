@@ -3,12 +3,15 @@
 #define GET_CTRL(a) (GET_DISPLAY displayCtrl ##a)
 if (PG_get(STATUS)) then {
 	PG_set(STATUS,false);
-//	hint "Status display disabled";
-}else{
+	//hint "Status display disabled";
+} else {
 	hint "Status display enabled";
 	PG_set(STATUS,true);
 	[] spawn {
+		private ["_crew_stat","_crew","_cursortarget"];
+
 		while {PG_get(STATUS)} do {
+
 			sleep 0.5;
 			_cursortarget = cursorTarget;
 			if ((alive _cursortarget)) then {
@@ -24,5 +27,3 @@ if (PG_get(STATUS)) then {
 		};
 	};
 };
-
-

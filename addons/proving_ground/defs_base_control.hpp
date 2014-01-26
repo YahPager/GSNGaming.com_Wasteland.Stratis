@@ -3,7 +3,7 @@
 		idc = -1;
 		type = 15;
 		style = 0;
-		class VScrollbar 
+		class VScrollbar
 		{
 			color[] = {1, 1, 1, 1};
 			width = 0.021;
@@ -11,13 +11,13 @@
 			autoScrollDelay = 5;
 			autoScrollRewind = 0;
 		};
-		
-		class HScrollbar 
+
+		class HScrollbar
 		{
 			color[] = {1, 1, 1, 1};
 			height = 0.028;
 		};
-		
+
 		class ScrollBar
 		{
 			color[] = {1,1,1,0.6};
@@ -28,9 +28,9 @@
 			arrowFull = "#(argb,8,8,3)color(1,1,1,1)";
 			border = "#(argb,8,8,3)color(1,1,1,1)";
 		};
-		x = 0; 
+		x = 0;
 		w = 1;
-		y = 0; 
+		y = 0;
 		h = 1;
 	};
 
@@ -130,19 +130,19 @@
 		idc = -1;
 		type = 16;
 		style = 0;
-		
+
 		text = "btn";
 		action = "";
-		
+
 		x = 0;
 		y = 0;
-		
+
 		w = 0.23;
 		h = 0.06;
-		
+
 		size = 0.03921;
 		sizeEx = 0.03921;
-		
+
 		color[] = {0.8314, 0.8784, 0.6275, 1.0};
 		color2[] = {0.95, 0.95, 0.95, 1};
 		colorBackground[] = {1, 1, 1, 1};
@@ -150,31 +150,31 @@
 		colorDisabled[] = {1, 1, 1, 0.25};
 		periodFocus = 1.2;
 		periodOver = 0.8;
-		
-		class HitZone 
+
+		class HitZone
 		{
 			left = 0.004;
 			top = 0.004;
 			right = 0.004;
 			bottom = 0.004;
 		};
-		
-		class ShortcutPos 
+
+		class ShortcutPos
 		{
 			left = 0.0145;
 			top = 0.016;
 			w = 0.03631;
 			h = 0.01;
 		};
-		
-		class TextPos 
+
+		class TextPos
 		{
 			left = 0.03;
 			top = 0.001;
 			right = 0.005;
 			bottom = 0.001;
 		};
-		
+
 		textureNoShortcut = "";
 		/*animTextureNormal = "client\ui\ui_button_normal_ca.paa";
 		animTextureDisabled = "client\ui\ui_button_disabled_ca.paa";
@@ -191,21 +191,21 @@
 		animTextureNoShortcut = "client\ui\igui_button_normal_ca.paa";
 		period = 0.4;
 		font = "PuristaBold";
-		
+
 		soundEnter[] = {"\A3\ui_f\data\Sound\MOUSE2", 0.09, 1};
 		soundPush[] = {"\A3\ui_f\data\Sound\NEW1", 0.09, 1};
 		soundClick[] = {"\A3\ui_f\data\Sound\MOUSE3", 0.07, 1};
 		soundEscape[] = {"\A3\ui_f\data\Sound\MOUSE1", 0.09, 1};
-		
-		class Attributes 
+
+		class Attributes
 		{
 			font = "PuristaBold";
 			color = "#E5E5E5";
 			align = "left";
 			shadow = "true";
 		};
-		
-		class AttributesImage 
+
+		class AttributesImage
 		{
 			font = "PuristaBold";
 			color = "#E5E5E5";
@@ -250,9 +250,9 @@
 			colorActive[] = {1, 1, 1, 1};
 			colorDisabled[] = {1, 1, 1, 1};
 			thumb = "client\ui\ui_scrollbar_thumb_ca.paa";
-            arrowFull = "client\ui\ui_arrow_top_active_ca.paa";
-            arrowEmpty = "client\ui\ui_arrow_top_ca.paa";
-            border = "client\ui\ui_border_scroll_ca.paa";
+			arrowFull = "client\ui\ui_arrow_top_active_ca.paa";
+			arrowEmpty = "client\ui\ui_arrow_top_ca.paa";
+			border = "client\ui\ui_border_scroll_ca.paa";
 		};
 	};
 
@@ -334,11 +334,11 @@
 		sizeExInfo = 0.034000;
 		fontLevel = "PuristaBold";
 		sizeExLevel = 0.034000;
-		
+
 		text = "\ca\ui\data\map_background2_co.paa";
-		
+
 		maxSatelliteAlpha = 0;	 // Alpha to 0 by default
-		alphaFadeStartScale = 1.0; 
+		alphaFadeStartScale = 1.0;
 		alphaFadeEndScale = 1.1;   // Prevent div/0
 
 		showCountourInterval=2;
@@ -572,7 +572,7 @@
 			coefMin = 0.900000;
 			coefMax = 4;
 		};
-		
+
 		class Task {
 			icon = "\ca\ui\data\map_waypoint_ca.paa";
 			iconCreated = "#(argb,8,8,3)color(1,1,1,1)";

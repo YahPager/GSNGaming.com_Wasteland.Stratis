@@ -1,5 +1,7 @@
 _fnc_create_land_target = {
-	private ["_index","_unit_type"];
+
+	private ["_index","_unit_type","_is_new","_unit","_offset","_core","_dir","_pos","_tdist","_tspeed","_tdir","_grp","_target"];
+
 	_index = _this select 0;
 	_unit_type = _this select 1;
 	_offset = if (count(_this) >2) then {_this select 2}else{0};
@@ -9,7 +11,9 @@ _fnc_create_land_target = {
 	_dir = getDir _core;
 	_pos = getPos _core;
 	_tdist = PG_get(target_props) select 0;
-	_tspeed = PG_get(target_props) select 1;
+
+	//_tspeed = PG_get(target_props) select 1;
+
 	_tdir = PG_get(target_props) select 2;
 	_grp = createGroup PG_get(opfor);
 	_grp copyWaypoints PG_get(target_grp);
@@ -18,27 +22,26 @@ _fnc_create_land_target = {
 	}else{
 		waypointPosition ((waypoints _grp) select 0)
 	};
-	
-	
+
 	_unit = objNull;
 	if (_unit_type isKindOf "Man") then {
 		_unit = _grp createUnit [_unit_type,_pos,[],0.1,"NONE"];
 		switch PG_get(target_mode) do {
 			case 2: {//land AI
 
-				};
+			};
 			default {
-					_unit setBehaviour "CARELESS"; 
-					_unit disableAI "PATHPLAN";
-					_unit disableAI "MOVE";
-					_unit doWatch _core;
-					_unit stop true;
+				_unit setBehaviour "CARELESS";
+				_unit disableAI "PATHPLAN";
+				_unit disableAI "MOVE";
+				_unit doWatch _core;
+				_unit stop true;
 			};
 		};
-		_unit allowFleeing 0; 
+		_unit allowFleeing 0;
 		_unit disableAI "TARGET";
 		_unit disableAI "AUTOTARGET";
-//		_unit disableAI "ANIM";
+		//_unit disableAI "ANIM";
 		_unit setCombatMode "BLUE";
 		switch (_index%4) do {
 			case 0: {_unit setUnitPos "UP"};
@@ -57,10 +60,9 @@ _fnc_create_land_target = {
 	{_unit removeMagazine _x} forEach magazines _unit;
 	group player reveal _unit;
 	//hint on hit
-	_unit addEventHandler["hit","hintSilent format['""%1"" hit, damage:%2',getText(configFile >> 'cfgVehicles' >> typeof (_this select 0) >> 'displayName'),ceil((_this select 2)*100)/100]; [4,_this] call c_proving_ground_fnc_statistics"]; 
+	_unit addEventHandler["hit","hintSilent format['""%1"" hit, damage:%2',getText(configFile >> 'cfgVehicles' >> typeof (_this select 0) >> 'displayName'),ceil((_this select 2)*100)/100]; [4,_this] call c_proving_ground_fnc_statistics"];
 	//hint when killed
 	_unit addEventHandler["killed","hintSilent format['""%1"" killed',getText(configFile >> 'cfgVehicles' >> typeof (_this select 0) >> 'displayName')];[5,_this] call c_proving_ground_fnc_statistics"];
-
 
 	//hint format ["%1",[_index,_trgname]];
 
@@ -68,43 +70,42 @@ _fnc_create_land_target = {
 	PG_set_arr(LAND_TARGETS,_index,_target);
 	switch PG_get(target_mode) do {
 		case 0: {//land static
-				if (_is_new) then {
-					[] call PG_get(fnc_calc_offsets);
-				}else{
-					[0,_index] call PG_get(fnc_move_land_targets);
-				};
+			if (_is_new) then {
+				[] call PG_get(fnc_calc_offsets);
+			}else{
+				[0,_index] call PG_get(fnc_move_land_targets);
 			};
+		};
 		case 1: {//land random
-				_unit spawn PG_get(fnc_move_rand_land);
-			};
+			_unit spawn PG_get(fnc_move_rand_land);
+		};
 	};
 	_unit
 };
 
 _fnc_create_crew = {
-	private["_unit","_crew","_grp","_veh"];
+	private ["_unit","_crew","_grp","_veh","_forEachIndex","_target_mode"];
 	_veh = _this select 0;
 	_grp = _this select 1;
 	_crew = getArray(configFile >> "cfgVehicles" >> (typeOf _veh) >> "typicalCargo");
 	_target_mode = PG_get(target_mode);
-
 	{
 		_unit = (_grp createUnit [_x,[0,0,0],[],0.1,"NONE"]);
 		{_unit removeMagazine _x} forEach magazines _unit;
 		switch _target_mode do {
 			case 2: {//land AI
-					_unit doWatch PG_get(core);
-				};
+				_unit doWatch PG_get(core);
+			};
 			case 3: {//air AI
-				};
+			};
 			default {
-					_unit disableAI "PATHPLAN";
-					_unit disableAI "MOVE";
-					_unit doWatch PG_get(core);
-					_unit stop true;
+				_unit disableAI "PATHPLAN";
+				_unit disableAI "MOVE";
+				_unit doWatch PG_get(core);
+				_unit stop true;
 			};
 		};
-		_unit allowFleeing 0; 
+		_unit allowFleeing 0;
 		_unit disableAI "TARGET";
 		_unit disableAI "AUTOTARGET";
 		_unit setCombatMode "BLUE";
@@ -118,48 +119,47 @@ _fnc_create_crew = {
 };
 
 _fnc_create_air_target = {
+	private ["_index","_veh_type","_count","_core","_tdist","_tspeed","_tdir","_dir","_pos","_veh","_grp","_target"];
 	_index = _this select 0;
-	_veh_type = _this select 1;
-	_count = count PG_get(air_targets);
-	if (_index == -1) then {_index = _count;};
-	
-		
-	_core = PG_get(core);
-	_tdist = PG_get(target_props) select 0;
-	_tspeed = PG_get(target_props) select 1;
-	_tdir = PG_get(target_props) select 2;
-	_dir = getDir _core;
-	_pos = getPos _core;
-	_veh = createVehicle [_veh_type, [0,0,1000], [], 0, "FLY"];
-	_grp = createGroup PG_get(opfor);
-	_veh setDir _dir; 
-	_veh setPos [_pos select 0,_pos select 1,10]; 
-	_veh engineOn true;
-	_veh setVelocity [80*sin(_dir),80*cos(_dir),10];
-	[_veh,_grp] call PG_get(fnc_create_crew);
-	_veh addEventHandler ["IncomingMissile","(_this select 0) fire [""CMFlareLauncher"",""Burst""]"];
-	_target = [_veh,_veh_type,_grp];
-	PG_set_arr(AIR_TARGETS,_index,_target);
-	group player reveal _veh;
-	_grp copyWaypoints PG_get(air_target_grp);
-	_veh flyInHeight 300;
-
-	_veh addEventHandler["hit","hintSilent format['""%1"" hit\ndamage:%2\ncrew status: %3',getText(configFile >> 'cfgVehicles' >> typeof (_this select 0) >> 'displayName'),ceil((_this select 2)*100)/100,[(_this select 0)] call {_crew = crew (_this select 0);_crew_stat = [];{_crew_stat set [count _crew_stat, damage _x]} forEach _crew;_crew_stat}]; "]; 
-	_veh addEventHandler["killed","hintSilent format['""%1"" killed',getText(configFile >> 'cfgVehicles' >> typeof (_this select 0) >> 'displayName')];"];
+		_veh_type = _this select 1;
+		_count = count PG_get(air_targets);
+		if (_index == -1) then {_index = _count;};
+		_core = PG_get(core);
+		_tdist = PG_get(target_props) select 0;
+		//_tspeed = PG_get(target_props) select 1;
+		//_tdir = PG_get(target_props) select 2;
+		_dir = getDir _core;
+		_pos = getPos _core;
+		_veh = createVehicle [_veh_type, [0,0,1000], [], 0, "FLY"];
+		_grp = createGroup PG_get(opfor);
+		_veh setDir _dir;
+		_veh setPos [_pos select 0,_pos select 1,10];
+		_veh engineOn true;
+		_veh setVelocity [80*sin(_dir),80*cos(_dir),10];
+		[_veh,_grp] call PG_get(fnc_create_crew);
+		_veh addEventHandler ["IncomingMissile","(_this select 0) fire [""CMFlareLauncher"",""Burst""]"];
+		_target = [_veh,_veh_type,_grp];
+		PG_set_arr(AIR_TARGETS,_index,_target);
+		group player reveal _veh;
+		_grp copyWaypoints PG_get(air_target_grp);
+		_veh flyInHeight 300;
+		_veh addEventHandler["hit","hintSilent format['""%1"" hit\ndamage:%2\ncrew status: %3',getText(configFile >> 'cfgVehicles' >> typeof (_this select 0) >> 'displayName'),ceil((_this select 2)*100)/100,[(_this select 0)] call {_crew = crew (_this select 0);_crew_stat = [];{_crew_stat set [count _crew_stat, damage _x]} forEach _crew;_crew_stat}]; "];
+		_veh addEventHandler["killed","hintSilent format['""%1"" killed',getText(configFile >> 'cfgVehicles' >> typeof (_this select 0) >> 'displayName')];"];
 
 	_veh
 };
 
 _fnc_move_land_targets = {
-	_shift = _this select 0;
-	_move_only = _this select 1;//change position only of selected unit index, -1 - change position of all units
-	_core = PG_get(core);
-	_tdist = PG_get(target_props) select 0;
-	_tspeed = PG_get(target_props) select 1;
-	_tdir = PG_get(target_props) select 2;
-	_dir = getDir _core;
-	_pos = getPos _core;
-	_land_targets = if (_move_only>-1) then {[PG_get(land_targets) select _move_only]}else{PG_get(land_targets)};
+	private ["_target","_unit","_side_offset","_tpos","_shift","_move_only","_core","_tdist","_tspeed","_tdir","_dir","_pos","_land_targets"];
+		_shift = _this select 0;
+		_move_only = _this select 1;//change position only of selected unit index, -1 - change position of all units
+		_core = PG_get(core);
+		_tdist = PG_get(target_props) select 0;
+		//_tspeed = PG_get(target_props) select 1;
+		_tdir = PG_get(target_props) select 2;
+		_dir = getDir _core;
+		_pos = getPos _core;
+		_land_targets = if (_move_only>-1) then {[PG_get(land_targets) select _move_only]}else{PG_get(land_targets)};
 
 	{//change unit position
 		_target = _x;
@@ -172,38 +172,40 @@ _fnc_move_land_targets = {
 };
 
 _fnc_calc_offsets = {
+	private ["_tdir","_unit","_type","_size","_between","_center_offset","_prev_size","_forEachIndex","_side_offset","_land_targets","_core","_dir","_pos","_betweenArray","_new_land_targets"];
 	_land_targets = PG_get(land_targets);
-	_core = PG_get(CORE);
-	_dir = getDir _core;
-	_pos = getPos _core;
-	_center_offset = 0;
-	_prev_size = 0;
-	_betweenArray = [];
-	{//calculate side offsets
-		_unit = _x select 0;
-		_type = _x select 1;
-		_size = switch true do {
-			case (_type isKindOf "man"): {1};
-			case (_type isKindOf "air"): {12};
-			default {3+abs(5*sin(_dir-_tdir))};
-		};
-		_between = _size + _prev_size;
-		_center_offset = _center_offset + _size;
-		_betweenArray set [count _betweenArray,_between];
-		_prev_size = _size;
-	} forEach _land_targets;
-	_side_offset = - _center_offset;
-	_new_land_targets = [];
-	{
-		_between = _betweenArray select _forEachIndex;
-		_side_offset = _side_offset + _between;
-		_new_land_targets set [_forEachIndex,[_x select 0,_x select 1,_x select 2,_side_offset]];
-	} forEach _land_targets;
-	PG_set(land_targets,_new_land_targets);
+		_core = PG_get(CORE);
+		_dir = getDir _core;
+		//_pos = getPos _core;
+		_center_offset = 0;
+		_prev_size = 0;
+		_betweenArray = [];
+		{//calculate side offsets
+			//_unit = _x select 0;
+			_type = _x select 1;
+			_size = switch true do {
+				case (_type isKindOf "man"): {1};
+				case (_type isKindOf "air"): {12};
+				default {3+abs(5*sin(_dir-_tdir))};
+			};
+			_between = _size + _prev_size;
+			_center_offset = _center_offset + _size;
+			_betweenArray set [count _betweenArray,_between];
+			_prev_size = _size;
+		} forEach _land_targets;
+			_side_offset = - _center_offset;
+			_new_land_targets = [];
+			{
+				_between = _betweenArray select _forEachIndex;
+				_side_offset = _side_offset + _between;
+				_new_land_targets set [_forEachIndex,[_x select 0,_x select 1,_x select 2,_side_offset]];
+			} forEach _land_targets;
+		PG_set(land_targets,_new_land_targets);
 	[0,-1] call PG_get(fnc_move_land_targets);
 };
 
 _fnc_move_rand_land = {
+	private ["_shift_inc","_shift","_tpos","_delay","_cdist","_cdir","_side_offset","_unit","_props","_tdist","_tdir","_core","_dir","_pos","_rprops","_rdist","_rspeed","_rdir","_PG_tdist"];
 	_unit = _this;
 	_props = PG_get(target_props);
 	_tdist = _props select 0;
@@ -249,32 +251,33 @@ PG_set(fnc_calc_offsets,_fnc_calc_offsets);
 PG_set(fnc_move_land_targets,_fnc_move_land_targets);
 PG_set(fnc_move_rand_land,_fnc_move_rand_land);
 
-_booster_keyhandler = 
+_booster_keyhandler =
 {
-	private["_handled","_ctrl", "_dikCode", "_shift", "_ctrlKey", "_alt"];
-	_ctrl = _this select 0;
+	private ["_handled","_ctrl","_dikCode","_shift","_ctrlKey","_alt","_veh","_vel","_pos","_dir","_pitch","_vel_new"];
+	//_ctrl = _this select 0;
 	_dikCode = _this select 1;
 	_shift = _this select 2;
 	_ctrlKey = _this select 3;
 	_alt = _this select 4;
 	_handled = false;
 	if (!_shift && !_ctrlKey && !_alt && (_dikCode == 18)&&(vehicle player != player)) then {
-			
-			_ctrl = nil;
-			_handled = true;
-			_veh = vehicle player;
-			_vel = velocity _veh;
-			_pos = getPos _veh;
-			_dir = getdir _veh;
-			_pitch = acos((vectorUp _veh) select 2);
-			_vel_new = [((_vel select 0) + 10*sin(_dir)),((_vel select 1) + 10*cos(_dir)),((_vel select 2) + 10*sin(_pitch))];
-			_veh setVelocity _vel_new;
-		};
+//_ctrl = nil;
+		_handled = true;
+		_veh = vehicle player;
+		_vel = velocity _veh;
+		//_pos = getPos _veh;
+		_dir = getdir _veh;
+		_pitch = acos((vectorUp _veh) select 2);
+		_vel_new = [((_vel select 0) + 10*sin(_dir)),((_vel select 1) + 10*cos(_dir)),((_vel select 2) + 10*sin(_pitch))];
+		_veh setVelocity _vel_new;
+	};
 	_handled;
 };
 PG_set(booster_keyhandler,_booster_keyhandler);
 
 _fnc_add_weapon = {
+	private ["_cWepType","_current_magazines","_compatible_magazines","_magazines","_weapon","_weaponCfg","_type"];
+
 	_weapon = _this select 0;
 	_weaponCfg = (configFile >> "cfgWeapons" >> _weapon);
 	_type = getNumber(_weaponCfg >> "type");

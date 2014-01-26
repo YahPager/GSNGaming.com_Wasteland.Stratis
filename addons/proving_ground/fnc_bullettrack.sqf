@@ -2,11 +2,12 @@
 #define GET_DISPLAY (uiNameSpace getVariable "balca_debug_hint")
 #define GET_CTRL(a) (GET_DISPLAY displayCtrl ##a)
 
+private ["_veh","_ammo","_trackCam","_trackMarker","_bullet"];
+
 [3,_this] call PG_get(FNC_statistics);
 
-
 _trackCam = {
-	private ["_cam","_lastpos","_dir","_vel","_bullet","_acctime"];
+	private ["_cam","_lastpos","_dir","_vel","_bullet","_lastTime","_spd","_endTime","_ammo","_startpos","_interrupt"];
 	_bullet = _this;
 	_ammo = typeOf _bullet;
 	_startpos = getPos _bullet;
@@ -24,7 +25,6 @@ _trackCam = {
 	_cam camSetRelPos [0,-10,2];
 	_cam camCommit 0.1;
 
-
 	while {!(isNull _bullet)&&(PG_get(TRACKING))} do {
 		_lastTime = time;
 		_dir = getDir _bullet;
@@ -32,7 +32,7 @@ _trackCam = {
 		_spd = (_vel distance [0,0,0]) max 1;
 		_lastpos = getPosASL _bullet;
 		sleep 0.01;
-		_velVector = [(_vel select 0)/_spd,(_vel select 1)/_spd,(_vel select 2)/_spd];
+		//_velVector = [(_vel select 0)/_spd,(_vel select 1)/_spd,(_vel select 2)/_spd];
 		_cam camSetRelPos [0,-10,2];
 		//_cam camSetRelPos [-5*(_velVector select 0),-5*(_velVector select 1),-5*(_velVector select 2)];
 		_cam camcommit 5*(time - _lastTime);
@@ -58,8 +58,9 @@ _trackCam = {
 };
 
 _trackMarker = {
+	private ["_bullet","_lastpos","_markerName"];
 	_bullet = _this;
-	_startpos = getPos _bullet;
+	//_startpos = getPos _bullet;
 	_lastpos = getPos _bullet;
 	sleep .01;
 
@@ -70,7 +71,6 @@ _trackMarker = {
 	//_markerName setMarkerSizeLocal [.3,.3];
 	_markerName setMarkerAlphaLocal 1;
 	PG_set(hitmarkers,PG_get(hitmarkers)+[_markerName]);
-
 
 	while {!(isNull _bullet)} do {;
 		_markerName setMarkerPosLocal getPosASL _bullet;
@@ -92,4 +92,3 @@ if (PG_get(bulletcam)) then {
 if (PG_get(hitmarker)) then {
 	_bullet spawn _trackMarker;
 };
-

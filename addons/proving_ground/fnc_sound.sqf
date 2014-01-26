@@ -3,6 +3,7 @@
 #define GET_CTRL(a) (GET_DISPLAY displayCtrl ##a)
 #define GET_SELECTED_DATA(a) ([##a] call {_idc = _this select 0;_selection = (lbSelection GET_CTRL(_idc) select 0);if (isNil {_selection}) then {_selection = 0};(GET_CTRL(_idc) lbData _selection)})
 
+private ["_soundName","_titles","_sound","_cfgsounds","_selection","_idc","_mode"];
 
 _mode = _this select 0;
 switch (_mode) do {
@@ -15,15 +16,15 @@ case 0: {//fill sound list
 			_soundName = configName(_sound);
 			_titles = getArray(_sound >> "Titles");
 			if (count _titles > 1) then {
-				GET_CTRL(balca_soundlist_IDC) lbAdd (_soundName + "  " + (_titles select 1));
-			}else{
+				GET_CTRL(balca_soundlist_IDC) lbAdd (_soundName + " " + (_titles select 1));
+			} else {
 				GET_CTRL(balca_soundlist_IDC) lbAdd _soundName;
 			};
 			GET_CTRL(balca_soundlist_IDC) lbSetData [(lbSize GET_CTRL(balca_soundlist_IDC))-1,_soundName];
-			};
 		};
-		lbSort GET_CTRL(balca_soundlist_IDC);		
 	};
+	lbSort GET_CTRL(balca_soundlist_IDC);
+};
 case 1: {//play
 	deleteVehicle PG_get(SOUNDSOURCE);
 	PG_set(SOUNDSOURCE,"camera" createVehicle getPosATL player);

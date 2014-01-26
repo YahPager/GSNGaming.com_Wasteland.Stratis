@@ -1,6 +1,5 @@
 #include "defs.hpp"
-private ["_event","_keyCode","_shift","_control","_alt"];
-private["_handled","_ctrl", "_dikCode", "_shift", "_ctrlKey", "_alt"];
+private ["_shift","_alt","_handled","_ctrl","_dikCode","_ctrlKey","_newpos","_pitch","_dir","_balca_satcam","_cam","_keyhandler","_campos","_fov"];
 _ctrl = _this select 0;
 _dikCode = _this select 1;
 _shift = _this select 2;
@@ -76,7 +75,7 @@ switch (_dikCode) do {
 		_cam camCommit 0.1;
 		GVAR(balca_satcam) = [_cam,_keyhandler,_newpos,[_dir,_pitch,_fov]];
 		};
-/*	case 78:{	//Num +
+	/* case 78:{	//Num +
 		_fov = _fov*1.1;
 		_cam camSetFov _fov;
 		_cam camCommit 0.1;
@@ -87,7 +86,7 @@ switch (_dikCode) do {
 		_cam camSetFov _fov;
 		_cam camCommit 0.1;
 		GVAR(balca_satcam) = [_cam,_keyhandler,_campos,[_dir,_pitch,_fov]];
-		};*/
+		}; */
 	case 20:{	//T white is hot
 		ppEffectDestroy ppColor;
 		ppEffectDestroy ppInversion;

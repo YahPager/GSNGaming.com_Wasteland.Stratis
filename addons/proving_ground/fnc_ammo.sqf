@@ -28,5 +28,3 @@ if PG_get(AMMO) then {
 		};
 	};
 };
-
-

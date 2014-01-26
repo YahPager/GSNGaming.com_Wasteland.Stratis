@@ -32,8 +32,6 @@
 #define CT_MAP              100
 #define CT_MAP_MAIN         101
 #define CT_List_N_Box       102 // Arma 2 - N columns list box
-
-
 // Static styles
 #define ST_POS            0x0F
 #define ST_HPOS           0x03
@@ -64,20 +62,17 @@
 #define ST_KEEP_ASPECT_RATIO  0x800
 
 #define ST_TITLE          ST_TITLE_BAR + ST_CENTER
-
 // Slider styles
 #define SL_DIR            0x400
 #define SL_VERT           0
 #define SL_HORZ           0x400
 
 #define SL_TEXTURES       0x10
-
 // Listbox styles
 #define LB_TEXTURES       0x10
 #define LB_MULTI          0x20
 
 #define FontM             "TahomaB"
-
 
 #define safezoneX 0.1
 #define safezoneY 0.1

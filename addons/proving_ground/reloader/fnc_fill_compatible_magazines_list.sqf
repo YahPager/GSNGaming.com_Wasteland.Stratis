@@ -1,11 +1,14 @@
 #include "defs.hpp"
+
 disableSerialization;
+private ["_compatible_magazines","_magazines","_display_name","_index","_veh","_veh_type","_weapon","_default_magazines"];
+
 _index = _this select 0 select 1;
 
 _veh = GET_SELECTED_VEHICLE;
-_veh_type = GET_SELECTED_DATA(balca_loader_vehicle_list_IDC);
+//_veh_type = GET_SELECTED_DATA(balca_loader_vehicle_list_IDC);
 _weapon = GET_CTRL(balca_loader_weapon_list_IDC) lbData _index;
-_default_magazines = getArray(configFile >> "CfgVehicles" >> _veh_type >> "Turrets" >> "MainTurret" >> "magazines");
+//_default_magazines = getArray(configFile >> "CfgVehicles" >> _veh_type >> "Turrets" >> "MainTurret" >> "magazines");
 _compatible_magazines = getArray(configFile>>"CfgWeapons">>_weapon>>"magazines");
 
 if ((_veh isKindOf "Plane")or(_veh isKindOf "Helicopter")) then {
@@ -21,9 +24,8 @@ if ((_veh isKindOf "Plane")or(_veh isKindOf "Helicopter")) then {
 	_compatible_magazines = _magazines;
 };
 
-
 lbClear GET_CTRL(balca_loader_compatible_magazines_IDC);
-{	
+{        
 	_display_name = (getText(configFile >> "CfgMagazines" >> _x >> "displayName"));
 	if (_display_name=="") then {
 		GET_CTRL(balca_loader_compatible_magazines_IDC) lbAdd _x;

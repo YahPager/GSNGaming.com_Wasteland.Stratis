@@ -10,8 +10,8 @@ class balca_debug_main
 	controlsBackground[] = {};
 	objects[] = {};
 	controls[] = {
-				balca_btn_control_group
-				};
+		balca_btn_control_group
+	};
 /////////////
 #include "defs_base_control.hpp"
 /////////////
@@ -89,7 +89,7 @@ class balca_debug_main
 			};
 
 
-		//column 2
+			//column 2
 			class balca_ammo_btn : balca_debug_btn
 			{
 				x = column_weight; w = column_weight-column_div;
@@ -161,7 +161,7 @@ class balca_debug_main
 				text = "Console";
 				action = "closeDialog 0;createDialog ""balca_debug_console"";[0] call c_proving_ground_fnc_exec_console; if (!isServer) then { ['Some commands can get you kicked by BattlEye.','WARNING'] spawn BIS_fnc_guiMessage }";
 			};
-		//column 3
+			//column 3
 			class balca_sound_btn : balca_debug_btn
 			{
 				x = column_weight*2; w = column_weight-column_div;
@@ -231,23 +231,23 @@ class balca_debug_veh_creator
 	controlsBackground[] = {balca_debug_background};
 	objects[] = {};
 	controls[] = {
-				balca_VC_vehlist,
-				balca_VC_vehicle_shortcut,
-				balca_VC_veh_info,
-				balca_VC_fill_static,
-				balca_VC_fill_car,
-				balca_VC_fill_truck,
-				balca_VC_fill_APC,
-				balca_VC_fill_tank,
-				balca_VC_fill_helicopter,
-				balca_VC_fill_plane,
-				balca_VC_fill_ship,
-				balca_VC_class_to_clipboard_btn,
-				balca_VC_info_to_clipboard_btn,
-				balca_VC_create_veh_core_btn,
-				balca_VC_create_veh_player_btn,
-				balca_VC_close_btn
-				};
+		balca_VC_vehlist,
+		balca_VC_vehicle_shortcut,
+		balca_VC_veh_info,
+		balca_VC_fill_static,
+		balca_VC_fill_car,
+		balca_VC_fill_truck,
+		balca_VC_fill_APC,
+		balca_VC_fill_tank,
+		balca_VC_fill_helicopter,
+		balca_VC_fill_plane,
+		balca_VC_fill_ship,
+		balca_VC_class_to_clipboard_btn,
+		balca_VC_info_to_clipboard_btn,
+		balca_VC_create_veh_core_btn,
+		balca_VC_create_veh_player_btn,
+		balca_VC_close_btn
+	};
 /////////////////
 	class balca_debug_background
 	{
@@ -262,7 +262,6 @@ class balca_debug_veh_creator
 		font = "PuristaMedium";
 		sizeEx = 0.032;
 	};
-
 
 /////////////
 #include "defs_base_control.hpp"
@@ -421,26 +420,26 @@ class balca_debug_weap_creator
 	controlsBackground[] = {balca_debug_background};
 	objects[] = {};
 	controls[] = {
-				balca_WC_weaplist,
-				balca_WC_magazinelist,
-				balca_WC_weapon_shortcut,
-				balca_WC_weap_info,
-				balca_WC_magazine_info,
-				balca_WC_fill_rifles,
-				balca_WC_fill_scoped_rifles,
-				balca_WC_fill_heavy,
-				balca_WC_fill_launchers,
-				balca_WC_fill_pistols,
-				balca_WC_fill_grenades,
-				balca_WC_fill_binocular,
-				balca_WC_fill_items,
-				balca_WC_weap_to_clipboard_btn,
-				balca_WC_ammo_to_clipboard_btn,
-				balca_WC_create_weap_btn,
-				balca_WC_create_magazine_btn,
-				balca_WC_clear_magazines_btn,
-				balca_WC_close_btn
-				};
+		balca_WC_weaplist,
+		balca_WC_magazinelist,
+		balca_WC_weapon_shortcut,
+		balca_WC_weap_info,
+		balca_WC_magazine_info,
+		balca_WC_fill_rifles,
+		balca_WC_fill_scoped_rifles,
+		balca_WC_fill_heavy,
+		balca_WC_fill_launchers,
+		balca_WC_fill_pistols,
+		balca_WC_fill_grenades,
+		balca_WC_fill_binocular,
+		balca_WC_fill_items,
+		balca_WC_weap_to_clipboard_btn,
+		balca_WC_ammo_to_clipboard_btn,
+		balca_WC_create_weap_btn,
+		balca_WC_create_magazine_btn,
+		balca_WC_clear_magazines_btn,
+		balca_WC_close_btn
+	};
 /////////////////
 	class balca_debug_background
 	{
@@ -455,7 +454,6 @@ class balca_debug_weap_creator
 		font = "PuristaMedium";
 		sizeEx = 0.032;
 	};
-
 
 /////////////
 #include "defs_base_control.hpp"
@@ -649,11 +647,11 @@ class balca_debug_console
 	controlsBackground[] = {balca_debug_background};
 	objects[] = {};
 	controls[] = {
-				balca_debug_console_edit,
-				balca_debug_console_result,
-				balca_debug_console_history,
-				balca_debug_console_control_group,
-				};
+		balca_debug_console_edit,
+		balca_debug_console_result,
+		balca_debug_console_history,
+		balca_debug_console_control_group,
+	};
 
 	onKeyDown = "if((_this select 1) in [28,156]) then {[1] call c_proving_ground_fnc_exec_console;}; false";
 /////////////////
@@ -670,7 +668,6 @@ class balca_debug_console
 		font = "PuristaMedium";
 		sizeEx = 0.032;
 	};
-
 
 /////////////
 #include "defs_base_control.hpp"
@@ -773,14 +770,14 @@ class balca_target_display
 	controlsBackground[] = {balca_debug_background};
 	objects[] = {};
 	controls[] = {
-				balca_target_vehlist,
-				balca_target_vehicle_shortcut,
-				balca_target_veh_info,
-				balca_target_map,
-				balca_target_type_control_group,
-				balca_target_management_control_group,
-				balca_target_close_btn
-				};
+		balca_target_vehlist,
+		balca_target_vehicle_shortcut,
+		balca_target_veh_info,
+		balca_target_map,
+		balca_target_type_control_group,
+		balca_target_management_control_group,
+		balca_target_close_btn
+	};
 /////////////////
 	class balca_debug_background
 	{
@@ -795,7 +792,6 @@ class balca_target_display
 		font = "PuristaMedium";
 		sizeEx = 0.032;
 	};
-
 
 /////////////
 #include "defs_base_control.hpp"
@@ -1270,10 +1266,10 @@ class balca_sound_player
 	controlsBackground[] = {balca_debug_background};
 	objects[] = {};
 	controls[] = {
-				balca_soundlist,
-				balca_clipboard_btn,
-				balca_close_btn
-				};
+		balca_soundlist,
+		balca_clipboard_btn,
+		balca_close_btn
+	};
 /////////////////
 	class balca_debug_background
 	{
@@ -1288,7 +1284,6 @@ class balca_sound_player
 		font = "PuristaMedium";
 		sizeEx = 0.032;
 	};
-
 
 /////////////
 #include "defs_base_control.hpp"
@@ -1333,11 +1328,11 @@ class balca_statistics
 	controlsBackground[] = {balca_debug_background};
 	objects[] = {};
 	controls[] = {
-				balca_stat_text,
-				balca_reset_btn,
-				balca_clipboard_btn,
-				balca_close_btn
-				};
+		balca_stat_text,
+		balca_reset_btn,
+		balca_clipboard_btn,
+		balca_close_btn
+	};
 /////////////////
 	class balca_debug_background
 	{
@@ -1352,7 +1347,6 @@ class balca_statistics
 		font = "PuristaMedium";
 		sizeEx = 0.032;
 	};
-
 
 /////////////
 #include "defs_base_control.hpp"
@@ -1406,9 +1400,9 @@ class balca_environment
 	controlsBackground[] = {balca_debug_background};
 	objects[] = {};
 	controls[] = {
-				balca_env_control_group,
-				balca_apply_btn
-				};
+		balca_env_control_group,
+		balca_apply_btn
+	};
 /////////////////
 	class balca_debug_background
 	{
@@ -1423,7 +1417,6 @@ class balca_environment
 		font = "PuristaMedium";
 		sizeEx = 0.032;
 	};
-
 
 /////////////
 #include "defs_base_control.hpp"
@@ -1580,7 +1573,6 @@ class balca_environment
 		action = "[1] call c_proving_ground_fnc_environment;"; 
 	};
 };
-
 
 #include "CfgExplorer2\config.cpp"
 #include "Reloader\config.cpp"
