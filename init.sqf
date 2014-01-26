@@ -56,6 +56,7 @@ if (isServer) then
 };
 
 //init 3rd Party Scripts
+call compileFinal preprocessFileLineNumbers "addons\FAR_revive\FAR_revive_init.sqf";
 [] execVM "addons\R3F_ARTY_AND_LOG\init.sqf";
 [] execVM "addons\proving_Ground\init.sqf";
 [] execVM "addons\scripts\DynamicWeatherEffects.sqf";
